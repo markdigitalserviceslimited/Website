@@ -1,9 +1,7 @@
 .venv
-
 venv
-
 .agent
-
 *.pyc
-
 __pycache__/
+staticfiles/
+*.sqlite3
