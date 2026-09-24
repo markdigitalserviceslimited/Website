@@ -1,0 +1,471 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>{% block title %}Mark Digital Services LTD | Practical Digital Solutions for Modern Businesses & People{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}Mark Digital Services LTD (RC 9435450) provides website development, digital branding, social media management, technology training, and ICT equipment supply in Nigeria and worldwide.{% endblock %}">
+  <meta name="keywords" content="Website design Nigeria, software development Nigeria, social media management Nigeria, digital marketing Nigeria, digital branding, technology training, ICT equipment supply, Mark Digital Services LTD, Akor Mark Akoji">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mark Digital Services LTD | Digital Solutions That Help You Build, Connect & Grow">
+  <meta property="og:description" content="Web Development, Digital Branding, Social Media, Tech Skills Training & Genuine ICT Supply. Incorporated RC: 9435450.">
+  <meta property="og:image" content="{% static 'images/logo.jpeg' %}">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="{% static 'images/full-logo.jpeg' %}">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandNavy: '#032678',
+            brandBlue: '#0960D2',
+            brandSky: '#0C98F2',
+            brandDark: '#0F172A',
+            brandSlate: '#334155',
+            brandMuted: '#64748B',
+            brandLight: '#F8FAFC',
+            brandBorder: '#E2E8F0',
+            brandGreen: '#16A34A',
+            brandGreenHover: '#15803D',
+          },
+          fontFamily: {
+            heading: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'soft': '0 4px 20px -2px rgba(3, 38, 120, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04)',
+            'card-hover': '0 12px 32px -4px rgba(3, 38, 120, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.06)',
+            'nav': '0 2px 10px rgba(0, 0, 0, 0.04)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom base adjustments for smooth human feel */
+    body {
+      color: #334155;
+      background-color: #FFFFFF;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #0F172A;
+      letter-spacing: -0.02em;
+    }
+    ::selection {
+      background-color: #0960D2;
+      color: #FFFFFF;
+    }
+    /* Accessible focus state */
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid #0960D2;
+      outline-offset: 2px;
+    }
+
+    /* Standardized 3-tier Button System (Issues 3 & 16) */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      background-color: #0960D2;
+      color: #FFFFFF;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 1px 3px 0 rgba(9, 96, 210, 0.2);
+    }
+    .btn-primary:hover {
+      background-color: #032678;
+      box-shadow: 0 4px 12px 0 rgba(3, 38, 120, 0.25);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      background-color: #FFFFFF;
+      color: #032678;
+      border: 1px solid #CBD5E1;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+    }
+    .btn-secondary:hover {
+      background-color: #F8FAFC;
+      border-color: #94A3B8;
+      color: #0960D2;
+    }
+    .btn-accent {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      background-color: #ECFDF5;
+      color: #15803D;
+      border: 1px solid #A7F3D0;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-accent:hover {
+      background-color: #DCFCE7;
+      color: #166534;
+      border-color: #86EFAC;
+    }
+  </style>
+
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="min-h-screen flex flex-col font-sans">
+
+  <!-- TOP VERIFICATION & UTILITY BAR -->
+  <div class="bg-brandNavy text-white text-xs py-2 px-4 border-b border-blue-900/40">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="font-medium tracking-wide">CAC Registered Entity: <strong class="text-white">RC Number 9435450</strong></span>
+        <span class="hidden md:inline text-slate-400">•</span>
+        <span class="hidden md:inline text-slate-300">Tax ID: 2622237423339</span>
+      </div>
+      <div class="flex items-center gap-4 text-slate-300 text-xs">
+        <a href="tel:+2348117897778" class="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          <span>+234 811 789 7778</span>
+        </a>
+        <span class="text-slate-400">•</span>
+        <a href="mailto:markdigitalserviceslimited@gmail.com" class="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span>markdigitalserviceslimited@gmail.com</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN STICKY NAVIGATION -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-brandBorder shadow-nav transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo & Branding -->
+        <a href="{% url 'core:home' %}" class="flex items-center gap-3 cursor-pointer group">
+          <div class="relative w-12 h-12 rounded-xl overflow-hidden shadow-sm border border-slate-100 flex items-center justify-center bg-white flex-shrink-0">
+            <img src="{% static 'images/logo.jpeg' %}" alt="Mark Digital Services LTD Logo" class="w-full h-full object-contain">
+          </div>
+          <div>
+            <div class="font-bold text-lg leading-tight text-brandNavy font-heading group-hover:text-brandBlue transition-colors">
+              MARK DIGITAL
+            </div>
+            <div class="text-xs font-semibold text-slate-400 tracking-wider uppercase">
+              Services LTD
+            </div>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links (Issue 14: Active Navigation Indicator) -->
+        <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium">
+          <a href="{% url 'core:home' %}" class="py-1 cursor-pointer transition-colors {% if request.path == '/' %}text-brandBlue font-bold border-b-2 border-brandBlue{% else %}text-slate-600 hover:text-brandBlue{% endif %}" {% if request.path == '/' %}aria-current="page"{% endif %}>Home</a>
+          <a href="{% url 'core:services' %}" class="py-1 cursor-pointer transition-colors {% if request.path == '/services/' %}text-brandBlue font-bold border-b-2 border-brandBlue{% else %}text-slate-600 hover:text-brandBlue{% endif %}" {% if request.path == '/services/' %}aria-current="page"{% endif %}>Services</a>
+          <a href="{% url 'core:portfolio' %}" class="py-1 cursor-pointer transition-colors {% if request.path == '/portfolio/' %}text-brandBlue font-bold border-b-2 border-brandBlue{% else %}text-slate-600 hover:text-brandBlue{% endif %}" {% if request.path == '/portfolio/' %}aria-current="page"{% endif %}>Portfolio & Milestone</a>
+          <a href="{% url 'core:about' %}" class="py-1 cursor-pointer transition-colors {% if request.path == '/about/' %}text-brandBlue font-bold border-b-2 border-brandBlue{% else %}text-slate-600 hover:text-brandBlue{% endif %}" {% if request.path == '/about/' %}aria-current="page"{% endif %}>About Us</a>
+          <a href="/#faq" class="py-1 cursor-pointer transition-colors text-slate-600 hover:text-brandBlue">FAQ</a>
+          <a href="{% url 'core:contact' %}" class="py-1 cursor-pointer transition-colors {% if request.path == '/contact/' %}text-brandBlue font-bold border-b-2 border-brandBlue{% else %}text-slate-600 hover:text-brandBlue{% endif %}" {% if request.path == '/contact/' %}aria-current="page"{% endif %}>Contact</a>
+        </nav>
+
+        <!-- Header Actions: WhatsApp + Quote CTA (Unified Button Classes) -->
+        <div class="hidden sm:flex items-center gap-3">
+          <!-- WhatsApp Quick Action (Issue 6: Subtle secondary text-and-icon link to preserve hierarchy for primary quote CTA) -->
+          <a href="https://wa.me/2348117897778?text=Hello%20Mark%20Digital%20Services%20LTD%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-emerald-600 px-3 py-2 rounded-lg hover:bg-emerald-50/60 transition-colors cursor-pointer">
+            <svg class="w-4 h-4 fill-emerald-600 flex-shrink-0" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-1.996-.465-1.666-.69-2.738-2.39-2.822-2.502-.083-.112-.676-.901-.676-1.718 0-.817.429-1.218.582-1.383.153-.165.334-.206.445-.206.111 0 .222 0 .32.005.105.005.244-.04.382.291.144.344.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.188-.173.289-.087.102-.183.228-.261.306-.088.087-.179.182-.077.357.102.175.454.748.975 1.211.673.599 1.24.786 1.416.873.175.088.278.073.382-.045.105-.118.445-.518.563-.695.118-.178.236-.148.397-.089.161.059 1.02.481 1.196.569.175.088.293.133.336.207.043.074.043.431-.101.836z"/></svg>
+            <span>WhatsApp Us</span>
+          </a>
+
+          <!-- Primary Quote Button -->
+          <a href="{% url 'core:contact' %}" class="btn-primary px-5 py-2.5 text-sm cursor-pointer">
+            <span>Request a Quote</span>
+            <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <div class="flex items-center gap-2 lg:hidden">
+          <a href="https://wa.me/2348117897778" target="_blank" rel="noopener noreferrer" class="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg cursor-pointer">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-1.996-.465-1.666-.69-2.738-2.39-2.822-2.502-.083-.112-.676-.901-.676-1.718 0-.817.429-1.218.582-1.383.153-.165.334-.206.445-.206.111 0 .222 0 .32.005.105.005.244-.04.382.291.144.344.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.188-.173.289-.087.102-.183.228-.261.306-.088.087-.179.182-.077.357.102.175.454.748.975 1.211.673.599 1.24.786 1.416.873.175.088.278.073.382-.045.105-.118.445-.518.563-.695.118-.178.236-.148.397-.089.161.059 1.02.481 1.196.569.175.088.293.133.336.207.043.074.043.431-.101.836z"/></svg>
+          </a>
+          <button id="mobile-menu-btn" type="button" class="p-2 text-slate-600 hover:text-brandBlue hover:bg-slate-100 rounded-lg transition-colors cursor-pointer" aria-label="Toggle navigation menu">
+            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-brandBorder px-4 pt-3 pb-6 space-y-3 shadow-xl">
+      <div class="flex flex-col space-y-2 text-base font-medium text-slate-600">
+        <a href="{% url 'core:home' %}" class="px-3 py-2 rounded-lg transition-colors mobile-link {% if request.path == '/' %}bg-blue-50 text-brandBlue font-bold{% else %}hover:bg-blue-50 hover:text-brandBlue text-slate-600{% endif %}">Home</a>
+        <a href="{% url 'core:services' %}" class="px-3 py-2 rounded-lg transition-colors mobile-link {% if request.path == '/services/' %}bg-blue-50 text-brandBlue font-bold{% else %}hover:bg-blue-50 hover:text-brandBlue text-slate-600{% endif %}">Our Services</a>
+        <a href="{% url 'core:portfolio' %}" class="px-3 py-2 rounded-lg transition-colors mobile-link {% if request.path == '/portfolio/' %}bg-blue-50 text-brandBlue font-bold{% else %}hover:bg-blue-50 hover:text-brandBlue text-slate-600{% endif %}">Milestone & Proof</a>
+        <a href="{% url 'core:about' %}" class="px-3 py-2 rounded-lg transition-colors mobile-link {% if request.path == '/about/' %}bg-blue-50 text-brandBlue font-bold{% else %}hover:bg-blue-50 hover:text-brandBlue text-slate-600{% endif %}">About Us & CAC Registry</a>
+        <a href="/#faq" class="px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-brandBlue text-slate-600 transition-colors mobile-link">Frequently Asked Questions</a>
+        <a href="{% url 'core:contact' %}" class="px-3 py-2 rounded-lg transition-colors mobile-link {% if request.path == '/contact/' %}bg-blue-50 text-brandBlue font-bold{% else %}hover:bg-blue-50 hover:text-brandBlue text-slate-600{% endif %}">Contact & Office</a>
+      </div>
+      <div class="pt-4 border-t border-slate-100 flex flex-col gap-2">
+        <a href="{% url 'core:contact' %}" class="btn-primary w-full py-3 text-sm mobile-link">
+          Request a Free Quote
+        </a>
+        <a href="https://wa.me/2348117897778" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full py-2.5 text-sm">
+          Chat Directly on WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Notification Banner / Flash Messages -->
+  {% if messages %}
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+      {% for message in messages %}
+        <div class="p-4 rounded-xl border text-sm flex items-center justify-between {% if message.tags == 'success' %}bg-emerald-50 border-emerald-200 text-emerald-800{% else %}bg-amber-50 border-amber-200 text-amber-800{% endif %}">
+          <div class="flex items-center gap-3">
+            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>{{ message }}</span>
+          </div>
+          <button onclick="this.parentElement.remove()" class="text-slate-400 hover:text-slate-600">&times;</button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <!-- MAIN BODY -->
+  <main class="flex-grow">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- CORPORATE FOOTER -->
+  <footer class="bg-brandDark text-slate-300 pt-16 pb-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
+        
+        <!-- Company Identity & CAC details -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-white p-1 flex items-center justify-center flex-shrink-0">
+              <img src="{% static 'images/logo.jpeg' %}" alt="Mark Digital Services LTD Logo" class="w-full h-full object-contain">
+            </div>
+            <div>
+              <span class="font-bold text-white text-base tracking-tight font-heading block">Mark Digital Services LTD</span>
+              <span class="text-xs text-slate-400 font-medium">Digital & Technology Firm • RC 9435450</span>
+            </div>
+          </div>
+          
+          <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+            Mark Digital Services LTD is an incorporated Nigerian digital and technology firm providing website engineering, digital branding, performance social media management, practical technology training, and genuine ICT equipment supply.
+          </p>
+
+          <div class="p-3.5 rounded-lg bg-slate-900 border border-slate-800 text-xs space-y-1.5">
+            <div class="text-slate-300 font-semibold flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              Corporate Registry Status
+            </div>
+            <div class="text-slate-400">RC Number: <strong class="text-white font-mono">9435450</strong> • Tax ID: <strong class="text-white font-mono">2622237423339</strong></div>
+            <div class="text-slate-400">Registration Date: 23 March 2026 • Private Company Limited by Shares</div>
+          </div>
+        </div>
+
+        <!-- Services Navigation -->
+        <div>
+          <h3 class="text-white font-semibold text-sm mb-4 font-heading tracking-tight">Core Capabilities</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/#services" class="hover:text-white transition-colors">Web & Software Dev</a></li>
+            <li><a href="/#services" class="hover:text-white transition-colors">Social Media Management</a></li>
+            <li><a href="/#services" class="hover:text-white transition-colors">Business Promotion & Ads</a></li>
+            <li><a href="/#services" class="hover:text-white transition-colors">Branding & Creative Design</a></li>
+            <li><a href="/#services" class="hover:text-white transition-colors">Technology Skills Training</a></li>
+            <li><a href="/#services" class="hover:text-white transition-colors">ICT Equipment Supply</a></li>
+          </ul>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-white font-semibold text-sm mb-4 font-heading tracking-tight">Navigation</h3>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="/#case-study" class="hover:text-white transition-colors">Featured Case Study (200K+)</a></li>
+            <li><a href="/#why-us" class="hover:text-white transition-colors">Why Choose Us</a></li>
+            <li><a href="/#process" class="hover:text-white transition-colors">Our 4-Step Process</a></li>
+            <li><a href="/#about-governance" class="hover:text-white transition-colors">Leadership & Governance</a></li>
+            <li><a href="/#faq" class="hover:text-white transition-colors">Frequently Asked Questions</a></li>
+            <li><a href="{% url 'core:privacy_policy' %}" class="hover:text-white transition-colors">Privacy Policy</a></li>
+            <li><a href="{% url 'core:terms' %}" class="hover:text-white transition-colors">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Location -->
+        <div>
+          <h3 class="text-white font-semibold text-sm mb-4 font-heading tracking-tight">Office & Contact</h3>
+          <address class="not-italic text-sm text-slate-400 space-y-3">
+            <div class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-slate-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span>2, Rock Garden Avenue, Along Ganaja Road, Kogi State, Nigeria</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-slate-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <a href="tel:+2348117897778" class="hover:text-white transition-colors">+234 811 789 7778</a>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-slate-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <a href="mailto:markdigitalserviceslimited@gmail.com" class="hover:text-white transition-colors break-all">markdigitalserviceslimited@gmail.com</a>
+            </div>
+            <div class="pt-2 flex items-center gap-3">
+              <a href="https://www.linkedin.com/company/mdg-ltd/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-blue-600 transition-colors" aria-label="LinkedIn">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+              <a href="https://web.facebook.com/mark.akor.210789/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-blue-700 transition-colors" aria-label="Facebook">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+              </a>
+              <a href="https://wa.me/2348117897778" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-emerald-400 hover:text-white hover:bg-emerald-600 transition-colors" aria-label="WhatsApp">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-1.996-.465-1.666-.69-2.738-2.39-2.822-2.502-.083-.112-.676-.901-.676-1.718 0-.817.429-1.218.582-1.383.153-.165.334-.206.445-.206.111 0 .222 0 .32.005.105.005.244-.04.382.291.144.344.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.188-.173.289-.087.102-.183.228-.261.306-.088.087-.179.182-.077.357.102.175.454.748.975 1.211.673.599 1.24.786 1.416.873.175.088.278.073.382-.045.105-.118.445-.518.563-.695.118-.178.236-.148.397-.089.161.059 1.02.481 1.196.569.175.088.293.133.336.207.043.074.043.431-.101.836z"/></svg>
+              </a>
+            </div>
+          </address>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div>
+          © 2026 <strong>Mark Digital Services LTD</strong>. All rights reserved. Registered in the Federal Republic of Nigeria.
+        </div>
+        <div class="flex items-center gap-5">
+          <a href="{% url 'core:privacy_policy' %}" class="hover:text-slate-300 transition-colors">Privacy Policy</a>
+          <span>•</span>
+          <a href="{% url 'core:terms' %}" class="hover:text-slate-300 transition-colors">Terms of Service</a>
+          <span>•</span>
+          <!-- Issue 6: Style sub-footer CTA with prominent button affordance -->
+          <a href="{% url 'core:contact' %}" class="inline-flex items-center px-3 py-1 rounded-md text-xs font-semibold text-white bg-brandBlue hover:bg-blue-600 transition-colors shadow-xs">Request a Quote</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING QUICK WHATSAPP BUTTON (Issue 4: Resiliently anchored to viewport bottom-right corner) -->
+  <a href="https://wa.me/2348117897778?text=Hello%20Mark%20Digital%20Services%20LTD%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" style="position: fixed !important; bottom: 24px !important; right: 24px !important; z-index: 9999 !important; margin: 0 !important;" class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-700 text-white p-3.5 rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center group cursor-pointer" aria-label="Chat on WhatsApp">
+    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-1.996-.465-1.666-.69-2.738-2.39-2.822-2.502-.083-.112-.676-.901-.676-1.718 0-.817.429-1.218.582-1.383.153-.165.334-.206.445-.206.111 0 .222 0 .32.005.105.005.244-.04.382.291.144.344.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.188-.173.289-.087.102-.183.228-.261.306-.088.087-.179.182-.077.357.102.175.454.748.975 1.211.673.599 1.24.786 1.416.873.175.088.278.073.382-.045.105-.118.445-.518.563-.695.118-.178.236-.148.397-.089.161.059 1.02.481 1.196.569.175.088.293.133.336.207.043.074.043.431-.101.836z"/></svg>
+    <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out font-medium text-xs group-hover:ml-2">Chat on WhatsApp</span>
+  </a>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Mobile navigation toggle
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+          hamburgerIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+        } else {
+          mobileMenu.classList.add('hidden');
+          hamburgerIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        }
+      });
+
+      // Close mobile menu when link is clicked
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          hamburgerIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        });
+      });
+    }
+
+    // FAQ Accordion functionality
+    function toggleFaq(index) {
+      const answer = document.getElementById(`faq-ans-${index}`);
+      const icon = document.getElementById(`faq-icon-${index}`);
+      if (answer) {
+        const isHidden = answer.classList.contains('hidden');
+        // Close all first
+        document.querySelectorAll('.faq-answer').forEach(el => el.classList.add('hidden'));
+        document.querySelectorAll('.faq-icon').forEach(el => el.classList.remove('rotate-180'));
+        if (isHidden) {
+          answer.classList.remove('hidden');
+          if (icon) icon.classList.add('rotate-180');
+        }
+      }
+    }
+
+    // Service pill pre-selector for the quote form with hyphen/underscore normalization & bidirectional sync
+    function selectServiceForQuote(serviceValue) {
+      const normalizedValue = serviceValue.replace(/-/g, '_');
+      const hyphenValue = serviceValue.replace(/_/g, '-');
+      const selectElem = document.getElementById('id_service_needed');
+      if (selectElem) {
+        selectElem.value = normalizedValue;
+      }
+      // Also update pills if present
+      document.querySelectorAll('.service-pill').forEach(pill => {
+        const pillVal = pill.getAttribute('data-value');
+        if (pillVal === serviceValue || pillVal === normalizedValue || pillVal === hyphenValue) {
+          pill.classList.add('bg-brandBlue', 'text-white', 'border-brandBlue');
+          pill.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+          pill.setAttribute('aria-checked', 'true');
+        } else {
+          pill.classList.remove('bg-brandBlue', 'text-white', 'border-brandBlue');
+          pill.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
+          pill.setAttribute('aria-checked', 'false');
+        }
+      });
+      // Scroll to quote section smoothly
+      const target = document.getElementById('quote-section');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Bidirectional sync: when user changes dropdown directly, update active pill
+    document.addEventListener('DOMContentLoaded', () => {
+      const selectElem = document.getElementById('id_service_needed');
+      if (selectElem) {
+        selectElem.addEventListener('change', () => {
+          const val = selectElem.value;
+          document.querySelectorAll('.service-pill').forEach(pill => {
+            const pillVal = pill.getAttribute('data-value').replace(/-/g, '_');
+            if (pillVal === val) {
+              pill.classList.add('bg-brandBlue', 'text-white', 'border-brandBlue');
+              pill.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+              pill.setAttribute('aria-checked', 'true');
+            } else {
+              pill.classList.remove('bg-brandBlue', 'text-white', 'border-brandBlue');
+              pill.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
+              pill.setAttribute('aria-checked', 'false');
+            }
+          });
+        });
+      }
+    });
+  </script>
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>
