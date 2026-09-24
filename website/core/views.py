@@ -1,8 +1,54 @@
+import logging
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import JsonResponse
+from django.core.mail import send_mail
+from django.conf import settings
 from .models import QuoteRequest, Service, CaseStudy, FAQ
 from .forms import QuoteRequestForm
+
+logger = logging.getLogger(__name__)
+
+
+def send_quote_notification(quote):
+    """
+    Sends an email notification to company Gmail when a quote is submitted.
+    Fails silently so form submission and UX never break if SMTP is unconfigured.
+    """
+    subject = f"New Project Quote Request: {quote.full_name} ({quote.get_service_needed_display()})"
+    message = f"""You have received a new project quote request on Mark Digital Services LTD website:
+
+Client Details:
+- Name: {quote.full_name}
+- Business / Organization: {quote.business_name or 'N/A'}
+- Email: {quote.email}
+- Phone / WhatsApp: {quote.phone_or_whatsapp}
+
+Project Scope:
+- Service Needed: {quote.get_service_needed_display()}
+- Estimated Budget: {quote.get_estimated_budget_display()}
+- Expected Timeline: {quote.get_timeline_display()}
+
+Project Description:
+{quote.project_description}
+
+---
+Submitted at: {quote.created_at.strftime('%Y-%m-%d %H:%M:%S UTC') if quote.created_at else 'Just now'}
+Quick WhatsApp Link: https://wa.me/{quote.phone_or_whatsapp.replace('+', '').replace(' ', '')}
+"""
+    try:
+        recipient = getattr(settings, 'NOTIFICATION_EMAIL', 'markdigitalserviceslimited@gmail.com')
+        from_email = getattr(settings, 'DEFAULT_FROM_EMAIL', recipient)
+        # Send notification email
+        send_mail(
+            subject=subject,
+            message=message,
+            from_email=from_email,
+            recipient_list=[recipient],
+            fail_silently=True,
+        )
+    except Exception as e:
+        logger.warning(f"Could not send email notification for quote {quote.id}: {e}")
 
 
 def get_default_services():
@@ -118,7 +164,7 @@ def get_default_faqs():
         },
         {
             'question': 'Is Mark Digital Services LTD a legally registered company?',
-            'answer': 'Yes, Mark Digital Services LTD is an officially incorporated entity with the Corporate Affairs Commission (CAC) of the Federal Republic of Nigeria under RC Number 9435450 (Incorporation Date: 23 March 2026, Tax ID: 2622237423339) as a Private Company Limited by Shares.'
+            'answer': 'Yes, Mark Digital Services LTD is an officially incorporated entity in the Federal Republic of Nigeria, operating as a Private Company Limited by Shares with full legal standing.'
         },
     ]
 
@@ -188,6 +234,7 @@ def home_view(request):
         form = QuoteRequestForm(request.POST)
         if form.is_valid():
             quote = form.save()
+            send_quote_notification(quote)
             if request.headers.get('x-requested-with') == 'XMLHttpRequest':
                 return JsonResponse({
                     'status': 'success',
@@ -306,6 +353,7 @@ def contact_view(request):
         form = QuoteRequestForm(request.POST)
         if form.is_valid():
             quote = form.save()
+            send_quote_notification(quote)
             if request.headers.get('x-requested-with') == 'XMLHttpRequest':
                 return JsonResponse({
                     'status': 'success',

@@ -11,7 +11,7 @@ class WebsiteTests(TestCase):
         response = self.client.get(reverse('core:home'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'MARK DIGITAL')
-        self.assertContains(response, 'RC Number 9435450')
+        self.assertContains(response, 'Incorporated Nigerian Firm')
         self.assertContains(response, '+234 811 789 7778')
         self.assertContains(response, 'markdigitalserviceslimited@gmail.com')
         self.assertContains(response, 'Mr. Ben')
@@ -64,7 +64,7 @@ class WebsiteTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'About Mark Digital Services LTD')
         self.assertContains(response, 'Akor Mark Akoji')
-        self.assertContains(response, 'RC Number')
+        self.assertContains(response, 'Private Company Limited by Shares')
 
     def test_services_page(self):
         response = self.client.get(reverse('core:services'))
@@ -89,7 +89,7 @@ class WebsiteTests(TestCase):
         response = self.client.get(reverse('core:privacy_policy'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Privacy Policy')
-        self.assertContains(response, 'RC Number: 9435450')
+        self.assertContains(response, 'Mark Digital Services LTD')
 
     def test_terms_page(self):
         response = self.client.get(reverse('core:terms'))

@@ -112,7 +112,7 @@ class Command(BaseCommand):
             ),
             (
                 'Is Mark Digital Services LTD a legally registered company?',
-                'Yes, Mark Digital Services LTD is an officially incorporated entity with the Corporate Affairs Commission (CAC) of the Federal Republic of Nigeria under RC Number 9435450 (Incorporation Date: 23 March 2026, Tax ID: 2622237423339) as a Private Company Limited by Shares.'
+                'Yes, Mark Digital Services LTD is an officially incorporated entity in the Federal Republic of Nigeria, operating as a Private Company Limited by Shares with full legal standing.'
             ),
         ]
 
