@@ -361,6 +361,13 @@
     </div>
   </footer>
 
+  <!-- FLOATING BACK TO TOP BUTTON (Positioned directly above the WhatsApp button) -->
+  <button id="back-to-top-btn" type="button" onclick="scrollToTop()" style="position: fixed !important; bottom: 86px !important; right: 26px !important; z-index: 9999 !important; margin: 0 !important;" class="w-11 h-11 rounded-full bg-brandNavy hover:bg-brandBlue text-white shadow-lg hover:shadow-xl border border-slate-700/40 flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none translate-y-3 cursor-pointer group focus:outline-none focus:ring-2 focus:ring-brandBlue focus:ring-offset-2" aria-label="Back to top" title="Back to top">
+    <svg class="w-5 h-5 transition-transform duration-200 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+  </button>
+
   <!-- FLOATING QUICK WHATSAPP BUTTON (Issue 4: Resiliently anchored to viewport bottom-right corner) -->
   <a href="https://wa.me/2348117897778?text=Hello%20Mark%20Digital%20Services%20LTD%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" style="position: fixed !important; bottom: 24px !important; right: 24px !important; z-index: 9999 !important; margin: 0 !important;" class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-700 text-white p-3.5 rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center group cursor-pointer" aria-label="Chat on WhatsApp">
     <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-1.996-.465-1.666-.69-2.738-2.39-2.822-2.502-.083-.112-.676-.901-.676-1.718 0-.817.429-1.218.582-1.383.153-.165.334-.206.445-.206.111 0 .222 0 .32.005.105.005.244-.04.382.291.144.344.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.188-.173.289-.087.102-.183.228-.261.306-.088.087-.179.182-.077.357.102.175.454.748.975 1.211.673.599 1.24.786 1.416.873.175.088.278.073.382-.045.105-.118.445-.518.563-.695.118-.178.236-.148.397-.089.161.059 1.02.481 1.196.569.175.088.293.133.336.207.043.074.043.431-.101.836z"/></svg>
@@ -464,6 +471,33 @@
         });
       }
     });
+
+    // Back to Top smooth scroll & visibility toggle
+    const backToTopBtn = document.getElementById('back-to-top-btn');
+
+    function handleBackToTopVisibility() {
+      if (!backToTopBtn) return;
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-3');
+        backToTopBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      } else {
+        backToTopBtn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+        backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-3');
+      }
+    }
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    if (backToTopBtn) {
+      backToTopBtn.addEventListener('click', scrollToTop);
+    }
+    window.addEventListener('scroll', handleBackToTopVisibility, { passive: true });
+    handleBackToTopVisibility();
   </script>
   {% block extra_scripts %}{% endblock %}
 </body>
