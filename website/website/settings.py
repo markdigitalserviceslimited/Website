@@ -12,10 +12,14 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Load environment variables from .env file
+load_dotenv(BASE_DIR / '.env')
+load_dotenv(BASE_DIR.parent / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
@@ -26,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-$9+1-91d!@ix6uy^b$1nj
 # In production on Railway, set DEBUG=False in Railway Variables.
 DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = ['*', '.railway.app', '.up.railway.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [h.strip() for h in os.environ.get('ALLOWED_HOSTS', '*, .railway.app, .up.railway.app, localhost, 127.0.0.1').split(',') if h.strip()]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.railway.app',
@@ -70,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.site_settings',
             ],
         },
     },
@@ -141,6 +146,10 @@ STORAGES = {
 WHITENOISE_MANIFEST_STRICT = False
 
 
+# Media files (User uploads for Blog featured images, testimonials, etc.)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Email Configuration (for quote notifications to Gmail)
 EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
@@ -150,3 +159,20 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'markdigitalserviceslimited@
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER)
 NOTIFICATION_EMAIL = os.environ.get('NOTIFICATION_EMAIL', 'markdigitalserviceslimited@gmail.com')
+
+# Company Information & External Constants (from .env)
+COMPANY_NAME = os.environ.get('COMPANY_NAME', 'Mark Digital Services LTD')
+COMPANY_LEGAL_ENTITY = os.environ.get('COMPANY_LEGAL_ENTITY', 'Private Company Limited by Shares')
+COMPANY_DIRECTOR = os.environ.get('COMPANY_DIRECTOR', 'Akor Mark Akoji')
+COMPANY_OFFICE_ADDRESS = os.environ.get('COMPANY_OFFICE_ADDRESS', '2, Rock Garden Avenue, Along Ganaja Road, Kogi State, Nigeria')
+COMPANY_PHONE = os.environ.get('COMPANY_PHONE', '+234 811 789 7778')
+COMPANY_PHONE_RAW = os.environ.get('COMPANY_PHONE_RAW', '2348117897778')
+COMPANY_WHATSAPP = os.environ.get('COMPANY_WHATSAPP', '+234 811 789 7778')
+COMPANY_WHATSAPP_URL = os.environ.get('COMPANY_WHATSAPP_URL', 'https://wa.me/2348117897778?text=Hello%20Mark%20Digital%20Services%20LTD%2C%20I%20would%20like%20to%20discuss%20a%20project.')
+COMPANY_EMAIL = os.environ.get('COMPANY_EMAIL', 'markdigitalserviceslimited@gmail.com')
+LINKEDIN_URL = os.environ.get('LINKEDIN_URL', 'https://www.linkedin.com/company/mdg-ltd/')
+FACEBOOK_URL = os.environ.get('FACEBOOK_URL', 'https://web.facebook.com/mark.akor.210789/')
+WORKING_HOURS_WEEKDAY = os.environ.get('WORKING_HOURS_WEEKDAY', 'Monday – Friday: 9:00 AM – 5:00 PM WAT')
+WORKING_HOURS_WEEKEND = os.environ.get('WORKING_HOURS_WEEKEND', 'Saturday: 10:00 AM – 2:00 PM WAT')
+SITE_URL = os.environ.get('SITE_URL', 'http://127.0.0.1:8000')
+

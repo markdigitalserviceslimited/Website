@@ -1,0 +1,331 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ page_title }}{% endblock %}
+{% block meta_description %}Read practical technology insights, software engineering guides, digital marketing strategies, and ICT hardware procurement advice from Mark Digital Services LTD.{% endblock %}
+
+{% block extra_head %}
+<style>
+  .blog-card-excerpt {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<!-- =========================================================================
+     BLOG HERO & SEARCH HEADER
+     ========================================================================= -->
+<section class="relative bg-gradient-to-b from-brandNavy via-brandDark to-brandNavy text-white py-16 sm:py-20 overflow-hidden border-b border-slate-800">
+  <!-- Subtle tech background glow -->
+  <div class="absolute -top-24 -right-24 w-96 h-96 bg-brandBlue/20 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-3xl mx-auto text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-sky-300 text-xs font-semibold border border-blue-400/30">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>MARK DIGITAL INSIGHTS &amp; ENGINEERING</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight font-heading text-white">
+        Knowledge, Tech Insights &amp; Growth Strategies
+      </h1>
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+        Practical articles on web engineering, digital marketing, audience growth, workforce upskilling, and enterprise ICT procurement.
+      </p>
+
+      <!-- Search Bar -->
+      <form action="{% url 'core:blog_list' %}" method="GET" class="pt-4 max-w-xl mx-auto flex items-center gap-2">
+        {% if active_category %}
+          <input type="hidden" name="category" value="{{ active_category.slug }}">
+        {% endif %}
+        <div class="relative flex-grow">
+          <input 
+            type="text" 
+            name="q" 
+            value="{{ search_query }}" 
+            placeholder="Search articles by title, keyword, or topic..." 
+            class="w-full pl-11 pr-4 py-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-sky-400 focus:bg-white/15 transition-all"
+            aria-label="Search articles"
+          >
+          <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+        <button type="submit" class="btn-primary py-3 px-6 text-sm flex-shrink-0 cursor-pointer shadow-md">
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     CATEGORY FILTER BAR
+     ========================================================================= -->
+<section class="bg-white border-b border-slate-200 sticky top-20 z-30 shadow-xs backdrop-blur-md bg-white/95">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+    <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
+      <span class="text-xs font-bold uppercase tracking-wider text-slate-400 mr-2 flex-shrink-0">Filter:</span>
+      <a 
+        href="{% url 'core:blog_list' %}{% if search_query %}?q={{ search_query }}{% endif %}" 
+        class="px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer min-h-[38px] flex items-center {% if not active_category %}bg-brandBlue text-white shadow-xs{% else %}bg-slate-100 text-slate-600 hover:bg-slate-200{% endif %}"
+      >
+        All Articles
+      </a>
+      {% for cat in categories %}
+        <a 
+          href="{% url 'core:blog_list' %}?category={{ cat.slug }}{% if search_query %}&q={{ search_query }}{% endif %}" 
+          class="px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer min-h-[38px] flex items-center {% if active_category.slug == cat.slug %}bg-brandBlue text-white shadow-xs{% else %}bg-slate-100 text-slate-600 hover:bg-slate-200{% endif %}"
+        >
+          {{ cat.name }}
+          <span class="ml-1.5 px-1.5 py-0.5 rounded-full text-[10px] {% if active_category.slug == cat.slug %}bg-white/20 text-white{% else %}bg-slate-200 text-slate-500{% endif %}">
+            {{ cat.posts.count }}
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     FEATURED POST HIGHLIGHT (Shown when browsing all and without search query)
+     ========================================================================= -->
+{% if featured_post and not active_category and not search_query %}
+<section class="py-12 bg-slate-50/60 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-4 flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-brandBlue"></span>
+      <span class="text-xs font-bold uppercase tracking-wider text-brandNavy font-heading">Featured Spotlight</span>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-md hover:shadow-xl transition-shadow overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-0">
+      <!-- Media preview column -->
+      <div class="lg:col-span-6 bg-gradient-to-br from-brandNavy to-slate-800 relative min-h-[260px] sm:min-h-[340px] flex items-center justify-center p-8 text-white overflow-hidden">
+        {% if featured_post.featured_image %}
+          <img src="{{ featured_post.featured_image.url }}" alt="{{ featured_post.featured_image_alt|default:featured_post.title }}" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+        {% else %}
+          <div class="absolute inset-0 bg-gradient-to-tr from-brandNavy via-brandBlue/30 to-sky-600/40"></div>
+          <div class="relative z-10 text-center p-6 space-y-3">
+            <div class="w-16 h-16 mx-auto rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
+              <svg class="w-8 h-8 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+            </div>
+            <div class="text-xs font-mono uppercase tracking-widest text-sky-200">Engineering &amp; Strategy</div>
+          </div>
+        {% endif %}
+        <span class="absolute top-4 left-4 z-20 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-brandBlue text-white shadow-sm">
+          Featured Article
+        </span>
+      </div>
+
+      <!-- Content column -->
+      <div class="lg:col-span-6 p-6 sm:p-10 flex flex-col justify-between space-y-6">
+        <div class="space-y-4">
+          <div class="flex items-center gap-3 text-xs text-slate-500">
+            {% if featured_post.category %}
+              <span class="font-bold uppercase tracking-wider text-brandBlue bg-blue-50 px-2.5 py-1 rounded-md">
+                {{ featured_post.category.name }}
+              </span>
+            {% endif %}
+            <span>•</span>
+            <span>{{ featured_post.read_time }}</span>
+            <span>•</span>
+            <span>{{ featured_post.publish_date|date:"F d, Y"|default:featured_post.created_at|date:"F d, Y" }}</span>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-brandDark hover:text-brandBlue transition-colors font-heading leading-tight">
+            <a href="{% url 'core:blog_detail' featured_post.slug %}">
+              {{ featured_post.title }}
+            </a>
+          </h2>
+
+          <p class="blog-card-excerpt text-slate-600 text-sm sm:text-base leading-relaxed">
+            {{ featured_post.excerpt }}
+          </p>
+        </div>
+
+
+        <div class="pt-6 border-t border-slate-100 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            {% if featured_post.author and featured_post.author.avatar_image %}
+              <img src="{{ featured_post.author.avatar_image.url }}" alt="{{ featured_post.get_author_display }}" class="w-9 h-9 rounded-full object-cover border border-slate-200">
+            {% else %}
+              <div class="w-9 h-9 rounded-full bg-slate-900 text-white font-bold flex items-center justify-center text-xs">
+                {{ featured_post.author.avatar_initial|default:"MD" }}
+              </div>
+            {% endif %}
+            <div>
+              <div class="font-bold text-xs text-brandDark">{{ featured_post.get_author_display }}</div>
+              <div class="text-[11px] text-slate-400">{{ featured_post.author.role_or_title|default:"Mark Digital Desk" }}</div>
+            </div>
+          </div>
+
+          <a href="{% url 'core:blog_detail' featured_post.slug %}" class="btn-primary py-2.5 px-4 text-xs font-semibold cursor-pointer">
+            <span>Read Article</span>
+            <svg class="w-3.5 h-3.5 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- =========================================================================
+     POSTS GRID
+     ========================================================================= -->
+<section class="py-16 sm:py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header with results counter -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-8 mb-8 border-b border-slate-100">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-brandDark font-heading">
+          {% if active_category %}
+            Articles in {{ active_category.name }}
+          {% elif search_query %}
+            Search Results for "{{ search_query }}"
+          {% else %}
+            Latest Articles &amp; Technical Insights
+          {% endif %}
+        </h2>
+        <p class="text-sm text-slate-500 mt-1">
+          Showing {{ posts.count }} published article{{ posts.count|pluralize }}
+        </p>
+      </div>
+
+      {% if active_category or search_query %}
+        <a href="{% url 'core:blog_list' %}" class="inline-flex items-center gap-1.5 text-xs font-semibold text-brandBlue hover:underline">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          <span>Clear all filters</span>
+        </a>
+      {% endif %}
+    </div>
+
+    {% if posts %}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {% for post in posts %}
+          <article class="bg-white rounded-2xl border border-slate-200 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group hover:-translate-y-1">
+            
+            <!-- Thumbnail Media -->
+            <div class="relative h-48 bg-slate-900 overflow-hidden flex items-center justify-center">
+              {% if post.featured_image %}
+                <img src="{{ post.featured_image.url }}" alt="{{ post.featured_image_alt|default:post.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              {% else %}
+                <div class="absolute inset-0 bg-gradient-to-br from-brandNavy via-slate-800 to-blue-900 opacity-90"></div>
+                <div class="relative z-10 text-white text-center p-4">
+                  <div class="w-12 h-12 mx-auto rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 mb-2">
+                    <svg class="w-6 h-6 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+                  </div>
+                  <span class="text-[11px] font-mono uppercase tracking-wider text-slate-300">Mark Digital Post</span>
+                </div>
+              {% endif %}
+
+              {% if post.category %}
+                <span class="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-brandNavy/90 text-white backdrop-blur-md border border-white/10">
+                  {{ post.category.name }}
+                </span>
+              {% endif %}
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+              <div class="space-y-2.5">
+                <div class="flex items-center gap-2 text-xs text-slate-400">
+                  <span>{{ post.read_time }}</span>
+                  <span>•</span>
+                  <span>{{ post.publish_date|date:"M d, Y"|default:post.created_at|date:"M d, Y" }}</span>
+                  <span>•</span>
+                  <span class="flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    {{ post.view_count }}
+                  </span>
+                </div>
+
+                <h3 class="text-lg font-bold text-brandDark group-hover:text-brandBlue transition-colors font-heading leading-snug">
+                  <a href="{% url 'core:blog_detail' post.slug %}">
+                    {{ post.title }}
+                  </a>
+                </h3>
+
+                <p class="blog-card-excerpt text-slate-600 text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                  {{ post.excerpt }}
+                </p>
+              </div>
+
+
+              <!-- Author & Read Link -->
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div class="flex items-center gap-2 text-xs">
+                  {% if post.author and post.author.avatar_image %}
+                    <img src="{{ post.author.avatar_image.url }}" alt="{{ post.get_author_display }}" class="w-7 h-7 rounded-full object-cover border border-slate-200">
+                  {% else %}
+                    <div class="w-7 h-7 rounded-full bg-slate-100 text-brandNavy font-bold flex items-center justify-center text-[10px] border border-slate-200">
+                      {{ post.author.avatar_initial|default:"MD" }}
+                    </div>
+                  {% endif %}
+                  <span class="font-medium text-slate-600">{{ post.get_author_display }}</span>
+                </div>
+
+                <a href="{% url 'core:blog_detail' post.slug %}" class="inline-flex items-center text-xs font-bold text-brandBlue group-hover:text-blue-700 transition-colors">
+                  <span>Read</span>
+                  <svg class="w-3.5 h-3.5 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+
+            </div>
+
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <!-- Empty State -->
+      <div class="rounded-2xl border-2 border-dashed border-slate-200 p-12 text-center max-w-lg mx-auto space-y-4">
+        <div class="w-14 h-14 mx-auto rounded-full bg-blue-50 text-brandBlue flex items-center justify-center">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-brandDark font-heading">No Articles Found</h3>
+        <p class="text-sm text-slate-500">
+          No published articles matched your search or category filter. Try clearing your query or explore other topics.
+        </p>
+        <a href="{% url 'core:blog_list' %}" class="btn-primary py-2.5 px-5 text-xs inline-flex cursor-pointer">
+          View All Articles
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<!-- =========================================================================
+     BOTTOM CONSULTATION CTA BANNER
+     ========================================================================= -->
+<section class="py-16 bg-gradient-to-r from-brandNavy to-slate-900 text-white border-t border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl space-y-5">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold border border-emerald-500/30">
+      <span>TAILORED DIGITAL TRANSFORMATION</span>
+    </div>
+    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-heading text-white">
+      Have a Digital Project or Corporate Strategy in Mind?
+    </h2>
+    <p class="text-base text-slate-300 leading-relaxed font-normal">
+      From custom software development to hardware procurement and digital growth roadmaps, our engineering team is ready to assist.
+    </p>
+    <div class="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3">
+      <a href="{% url 'core:contact' %}" class="btn-primary py-3.5 px-7 text-sm font-semibold w-full sm:w-auto">
+        Request a Free Quotation
+      </a>
+      <a href="{{ COMPANY_WHATSAPP_URL }}" target="_blank" rel="noopener noreferrer" class="btn-secondary py-3 px-6 text-sm font-semibold w-full sm:w-auto flex items-center justify-center gap-2 !bg-white/10 !text-white !border-white/20 hover:!bg-white/20">
+        <svg class="w-4 h-4 fill-emerald-400" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-1.996-.465-1.666-.69-2.738-2.39-2.822-2.502-.083-.112-.676-.901-.676-1.718 0-.817.429-1.218.582-1.383.153-.165.334-.206.445-.206.111 0 .222 0 .32.005.105.005.244-.04.382.291.144.344.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.188-.173.289-.087.102-.183.228-.261.306-.088.087-.179.182-.077.357.102.175.454.748.975 1.211.673.599 1.24.786 1.416.873.175.088.278.073.382-.045.105-.118.445-.518.563-.695.118-.178.236-.148.397-.089.161.059 1.02.481 1.196.569.175.088.293.133.336.207.043.074.043.431-.101.836z"/></svg>
+        <span>Chat on WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

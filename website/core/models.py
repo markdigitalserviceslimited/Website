@@ -113,3 +113,290 @@ class FAQ(models.Model):
 
     def __str__(self):
         return self.question
+
+
+class BlogCategory(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=120, unique=True)
+    description = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = "Blog Category"
+        verbose_name_plural = "Blog Categories"
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        if self.name:
+            self.name = self.name.strip().title()
+        super().save(*args, **kwargs)
+
+
+class BlogAuthor(models.Model):
+    name = models.CharField(max_length=150, unique=True)
+    slug = models.SlugField(max_length=160, unique=True)
+    role_or_title = models.CharField(
+        max_length=150,
+        default="Technical Contributor",
+        help_text="e.g. 'Lead Systems Engineer', 'Managing Director', 'Growth Strategist'"
+    )
+    bio = models.TextField(
+        blank=True,
+        help_text="Short bio shown on article pages and author bylines"
+    )
+    avatar_image = models.ImageField(
+        upload_to='blog/authors/',
+        blank=True,
+        null=True,
+        help_text="Author profile photo"
+    )
+    avatar_initial = models.CharField(
+        max_length=5,
+        blank=True,
+        default="",
+        help_text="1-2 initials displayed when avatar image is not uploaded (auto-computed from name if left blank)"
+    )
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = "Blog Author"
+        verbose_name_plural = "Blog Authors"
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        if self.name:
+            self.name = self.name.strip().title()
+            if not self.avatar_initial or self.avatar_initial == "MD":
+                parts = self.name.split()
+                if parts:
+                    self.avatar_initial = "".join(p[0].upper() for p in parts[:2])
+                else:
+                    self.avatar_initial = "MD"
+        if not self.avatar_initial:
+            self.avatar_initial = "MD"
+        if self.role_or_title:
+            self.role_or_title = self.role_or_title.strip().title()
+        super().save(*args, **kwargs)
+
+
+class AuthorSocialLink(models.Model):
+    PLATFORM_CHOICES = (
+        ('linkedin', 'LinkedIn'),
+        ('twitter', 'X / Twitter'),
+        ('facebook', 'Facebook'),
+        ('instagram', 'Instagram'),
+        ('youtube', 'YouTube'),
+        ('github', 'GitHub'),
+        ('website', 'Personal / Portfolio Website'),
+        ('email', 'Email Address'),
+    )
+
+    author = models.ForeignKey(
+        BlogAuthor,
+        on_delete=models.CASCADE,
+        related_name='social_links'
+    )
+    platform = models.CharField(max_length=30, choices=PLATFORM_CHOICES)
+    url = models.CharField(
+        max_length=500,
+        help_text="Full URL (e.g. 'https://linkedin.com/in/username') or email with 'mailto:'"
+    )
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order', 'platform']
+        verbose_name = "Author Social Media Link"
+        verbose_name_plural = "Author Social Media Links"
+
+    def __str__(self):
+        return f"{self.author.name} - {self.get_platform_display()}"
+
+    def get_url(self):
+        if not self.url:
+            return "#"
+        clean = self.url.strip()
+        if self.platform == 'email':
+            if not clean.startswith('mailto:') and '@' in clean:
+                return f"mailto:{clean}"
+            return clean
+        if not clean.startswith(('http://', 'https://', 'mailto:')):
+            return f"https://{clean}"
+        return clean
+
+    def save(self, *args, **kwargs):
+        if self.url:
+            self.url = self.url.strip()
+            if self.platform == 'email':
+                if not self.url.startswith('mailto:') and '@' in self.url:
+                    self.url = f"mailto:{self.url}"
+            else:
+                if not self.url.startswith(('http://', 'https://')):
+                    self.url = f"https://{self.url}"
+        super().save(*args, **kwargs)
+
+
+class BlogPost(models.Model):
+    STATUS_CHOICES = (
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+    )
+
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=280, unique=True)
+    category = models.ForeignKey(
+        BlogCategory,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='posts'
+    )
+    author = models.ForeignKey(
+        BlogAuthor,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='posts',
+        help_text="Select dynamic author from admin panel"
+    )
+    author_name = models.CharField(
+        max_length=150,
+        default="Mark Digital Team",
+        help_text="Fallback author display name"
+    )
+    excerpt = models.TextField(
+        help_text="Brief summary shown on blog preview cards and search results"
+    )
+    content = models.TextField(
+        help_text="Main article content (HTML or plain text supported)"
+    )
+    read_time = models.CharField(
+        max_length=50,
+        default="5 min read",
+        help_text="e.g. '4 min read'"
+    )
+    featured_image = models.ImageField(
+        upload_to='blog/images/%Y/%m/',
+        blank=True,
+        null=True,
+        help_text="Recommended size: 1200x675px (16:9 ratio)"
+    )
+    featured_image_alt = models.CharField(
+        max_length=200,
+        blank=True,
+        help_text="Accessible description of the image"
+    )
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='published')
+    featured = models.BooleanField(
+        default=False,
+        help_text="Pin this article as the hero highlight on the blog page"
+    )
+    publish_date = models.DateTimeField(
+        help_text="Publication date shown to visitors",
+        null=True,
+        blank=True
+    )
+    view_count = models.PositiveIntegerField(default=0)
+    meta_title = models.CharField(
+        max_length=160,
+        blank=True,
+        help_text="SEO title (defaults to post title if blank)"
+    )
+    meta_description = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text="SEO description (defaults to excerpt if blank)"
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-featured', '-publish_date', '-created_at']
+        verbose_name = "Blog Post"
+        verbose_name_plural = "Blog Posts"
+
+    def __str__(self):
+        return self.title
+
+    def get_meta_title(self):
+        return self.meta_title or self.title
+
+    def get_meta_description(self):
+        return self.meta_description or self.excerpt[:200]
+
+    def get_author_display(self):
+        if self.author:
+            return self.author.name
+        return self.author_name
+
+    def save(self, *args, **kwargs):
+        if self.title:
+            self.title = self.title.strip().title()
+        if self.author_name:
+            self.author_name = self.author_name.strip().title()
+        if self.author:
+            self.author_name = self.author.name
+        super().save(*args, **kwargs)
+
+
+
+class Testimonial(models.Model):
+    client_name = models.CharField(max_length=150)
+    client_title_or_role = models.CharField(
+        max_length=150,
+        help_text="e.g. 'Lead Consultant & Managing Director'"
+    )
+    organization = models.CharField(
+        max_length=150,
+        help_text="e.g. 'Abuja Advisory Partners'"
+    )
+    service_category = models.CharField(
+        max_length=100,
+        help_text="e.g. 'Web Platform & Digital Strategy'"
+    )
+    quote = models.TextField(
+        help_text="Client feedback / review text"
+    )
+    avatar_initial = models.CharField(
+        max_length=5,
+        default="MD",
+        help_text="1-2 initials displayed when avatar image is not uploaded (e.g. 'MB')"
+    )
+    avatar_image = models.ImageField(
+        upload_to='testimonials/avatars/',
+        blank=True,
+        null=True,
+        help_text="Optional client photo"
+    )
+    rating = models.PositiveSmallIntegerField(
+        default=5,
+        help_text="Star rating from 1 to 5"
+    )
+    verified = models.BooleanField(
+        default=True,
+        help_text="Show verified client badge"
+    )
+    order = models.PositiveIntegerField(
+        default=0,
+        help_text="Display priority in the carousel (lower numbers first)"
+    )
+    is_active = models.BooleanField(
+        default=True,
+        help_text="Uncheck to hide without deleting"
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "Testimonial"
+        verbose_name_plural = "Testimonials"
+
+    def __str__(self):
+        return f"{self.client_name} ({self.organization})"
+

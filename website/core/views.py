@@ -1,11 +1,13 @@
 import logging
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import QuoteRequest, Service, CaseStudy, FAQ
+from django.db.models import Q, F
+from .models import QuoteRequest, Service, CaseStudy, FAQ, BlogCategory, BlogPost, Testimonial
 from .forms import QuoteRequestForm
+
 
 logger = logging.getLogger(__name__)
 
@@ -221,6 +223,9 @@ def home_view(request):
             'support_areas': first_case.get_support_areas(),
         }
 
+    # Fetch Testimonials
+    testimonials = Testimonial.objects.filter(is_active=True).order_by('order', '-created_at')
+
     # Fetch FAQs
     faqs_qs = FAQ.objects.filter(is_active=True)
     if faqs_qs.exists():
@@ -256,10 +261,89 @@ def home_view(request):
     context = {
         'services': services_data,
         'featured_case': featured_case,
+        'testimonials': testimonials,
         'faqs': faqs_data,
         'form': form,
     }
     return render(request, 'home.html', context)
+
+
+def blog_list_view(request):
+    """
+    Dynamic blog listing with category filtering and search query support.
+    """
+    category_slug = request.GET.get('category')
+    search_query = request.GET.get('q', '').strip()
+
+    posts = BlogPost.objects.filter(status='published').select_related('category', 'author').prefetch_related('author__social_links')
+
+    active_category = None
+    if category_slug:
+        active_category = BlogCategory.objects.filter(slug=category_slug).first()
+        if active_category:
+            posts = posts.filter(category=active_category)
+
+    if search_query:
+        posts = posts.filter(
+            Q(title__icontains=search_query) |
+            Q(excerpt__icontains=search_query) |
+            Q(content__icontains=search_query) |
+            Q(author_name__icontains=search_query) |
+            Q(author__name__icontains=search_query)
+        )
+
+    categories = BlogCategory.objects.all().order_by('name')
+    featured_post = posts.filter(featured=True).first()
+    # If no explicitly featured post in this view, pick the latest
+    if not featured_post and posts.exists() and not category_slug and not search_query:
+        featured_post = posts.first()
+
+    context = {
+        'posts': posts,
+        'categories': categories,
+        'active_category': active_category,
+        'featured_post': featured_post,
+        'search_query': search_query,
+        'page_title': 'Insights, Engineering & Digital Growth Articles | Mark Digital Services LTD',
+    }
+    return render(request, 'blog_list.html', context)
+
+
+def blog_detail_view(request, slug):
+    """
+    Dynamic blog post detail view with view tracking and related posts.
+    """
+    base_qs = BlogPost.objects.select_related('category', 'author').prefetch_related('author__social_links')
+    if request.user.is_staff:
+        post = get_object_or_404(base_qs, slug=slug)
+    else:
+        post = get_object_or_404(base_qs, slug=slug, status='published')
+
+    # Increment view count safely
+    BlogPost.objects.filter(pk=post.pk).update(view_count=F('view_count') + 1)
+    post.refresh_from_db(fields=['view_count'])
+
+    # Related posts in same category
+    related_posts = (
+        BlogPost.objects.filter(status='published')
+        .exclude(pk=post.pk)
+        .select_related('category', 'author')
+    )
+    if post.category:
+        related_posts = related_posts.filter(category=post.category)
+    related_posts = related_posts.order_by('-publish_date', '-created_at')[:3]
+
+    categories = BlogCategory.objects.all().order_by('name')
+
+    context = {
+        'post': post,
+        'related_posts': related_posts,
+        'categories': categories,
+        'page_title': f"{post.get_meta_title()} | Mark Digital Services LTD",
+        'meta_description': post.get_meta_description(),
+    }
+    return render(request, 'blog_detail.html', context)
+
 
 
 def privacy_policy_view(request):

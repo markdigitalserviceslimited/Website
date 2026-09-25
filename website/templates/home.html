@@ -822,7 +822,7 @@
             <span>Verified Client Reviews</span>
           </div>
           <div class="flex items-center gap-2">
-            <span id="testimonial-counter" class="text-xs font-mono font-semibold text-slate-400">01 / 05</span>
+            <span id="testimonial-counter" class="text-xs font-mono font-semibold text-slate-400">01 / {{ testimonials.count|stringformat:"02d" }}</span>
             <!-- Prev / Next Navigation Arrows -->
             <div class="flex items-center gap-1.5 ml-2">
               <button id="testimonial-prev-btn" type="button" class="w-7 h-7 rounded-full bg-slate-800/80 hover:bg-brandBlue text-white flex items-center justify-center transition-colors cursor-pointer border border-slate-700/60" aria-label="Previous Testimonial" title="Previous Review">
@@ -840,147 +840,43 @@
           
           <!-- Sliding Track (Moves Right-to-Left) -->
           <div id="testimonial-track" class="flex transition-transform duration-500 ease-in-out">
-            
-            <!-- Slide 1: Mr. Ben (YouTube Creator & Media Partner) -->
+            {% for item in testimonials %}
             <div class="testimonial-slide w-full flex-shrink-0 min-w-full p-6 sm:p-8 flex flex-col justify-between min-h-[380px] sm:min-h-[370px]">
               <div class="space-y-4">
                 <div class="flex items-center justify-between">
                   <span class="text-xs font-bold tracking-wider uppercase text-brandBlue bg-blue-50 px-2.5 py-1 rounded-md">
-                    YouTube Growth
+                    {{ item.service_category }}
                   </span>
-                  <div class="flex text-amber-400 text-sm tracking-tight" aria-label="5 out of 5 stars">
-                    ★★★★★
+                  <div class="flex text-amber-400 text-sm tracking-tight" aria-label="{{ item.rating }} out of 5 stars">
+                    {% for _ in "12345"|slice:item.rating %}★{% endfor %}
                   </div>
                 </div>
 
                 <blockquote class="text-slate-600 text-sm sm:text-base leading-relaxed italic">
-                  "Mark Digital Services LTD provided practical support that helped us improve our YouTube presence, audience retention, and approach to monetization. Seeing the channel grow beyond 200,000 subscribers has been a major milestone."
+                  "{{ item.quote }}"
                 </blockquote>
               </div>
 
               <div class="flex items-center gap-3 pt-5 border-t border-slate-100 mt-4">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-brandNavy to-blue-600 text-white flex items-center justify-center font-bold text-lg font-heading shadow-xs">
-                  B
-                </div>
-                <div>
-                  <div class="font-bold text-brandDark text-sm sm:text-base">Mr. Ben</div>
-                  <div class="text-xs text-slate-500">YouTube Creator &amp; Media Channel Partner (200K+ Milestone)</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 2: Engr. David O. (PrimeLogistics) -->
-            <div class="testimonial-slide w-full flex-shrink-0 min-w-full p-6 sm:p-8 flex flex-col justify-between min-h-[380px] sm:min-h-[370px]">
-              <div class="space-y-4">
-                <div class="flex items-center justify-between">
-                  <span class="text-xs font-bold tracking-wider uppercase text-purple-700 bg-purple-50 px-2.5 py-1 rounded-md">
-                    Web &amp; Software Dev
-                  </span>
-                  <div class="flex text-amber-400 text-sm tracking-tight" aria-label="5 out of 5 stars">
-                    ★★★★★
+                {% if item.avatar_image %}
+                  <img src="{{ item.avatar_image.url }}" alt="{{ item.client_name }}" class="w-12 h-12 rounded-full object-cover shadow-xs border border-slate-200">
+                {% else %}
+                  <div class="w-12 h-12 rounded-full bg-gradient-to-br from-brandNavy to-brandBlue text-white flex items-center justify-center font-bold text-lg font-heading shadow-xs">
+                    {{ item.avatar_initial }}
                   </div>
-                </div>
-
-                <blockquote class="text-slate-600 text-sm sm:text-base leading-relaxed italic">
-                  "Mark Digital engineered our corporate portal and freight dispatch system with speed and precision. Inbound inquiries increased by 40%, and their post-launch support and uptime have been absolutely dependable."
-                </blockquote>
-              </div>
-
-              <div class="flex items-center gap-3 pt-5 border-t border-slate-100 mt-4">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-800 to-indigo-600 text-white flex items-center justify-center font-bold text-lg font-heading shadow-xs">
-                  D
-                </div>
+                {% endif %}
                 <div>
-                  <div class="font-bold text-brandDark text-sm sm:text-base">Engr. David O.</div>
-                  <div class="text-xs text-slate-500">Managing Director • PrimeLogistics Ltd</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 3: Dr. Aisha Bello (EduTech Hub) -->
-            <div class="testimonial-slide w-full flex-shrink-0 min-w-full p-6 sm:p-8 flex flex-col justify-between min-h-[380px] sm:min-h-[370px]">
-              <div class="space-y-4">
-                <div class="flex items-center justify-between">
-                  <span class="text-xs font-bold tracking-wider uppercase text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">
-                    ICT Supply &amp; Training
-                  </span>
-                  <div class="flex text-amber-400 text-sm tracking-tight" aria-label="5 out of 5 stars">
-                    ★★★★★
+                  <div class="font-bold text-brandDark text-sm sm:text-base flex items-center gap-1.5">
+                    <span>{{ item.client_name }}</span>
+                    {% if item.verified %}
+                      <svg class="w-4 h-4 text-brandBlue fill-current" viewBox="0 0 20 20" title="Verified Client"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    {% endif %}
                   </div>
-                </div>
-
-                <blockquote class="text-slate-600 text-sm sm:text-base leading-relaxed italic">
-                  "They procured and configured 30 enterprise workstations for our learning lab, and delivered hands-on digital skills workshops for our tutors. Authentic hardware with genuine warranty and zero technical downtime."
-                </blockquote>
-              </div>
-
-              <div class="flex items-center gap-3 pt-5 border-t border-slate-100 mt-4">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-800 to-teal-600 text-white flex items-center justify-center font-bold text-lg font-heading shadow-xs">
-                  A
-                </div>
-                <div>
-                  <div class="font-bold text-brandDark text-sm sm:text-base">Dr. Aisha Bello</div>
-                  <div class="text-xs text-slate-500">Academy Director • EduTech Learning Hub</div>
+                  <div class="text-xs text-slate-500">{{ item.client_title_or_role }} • {{ item.organization }}</div>
                 </div>
               </div>
             </div>
-
-            <!-- Slide 4: Kelechi Nnamdi (Apex Retail) -->
-            <div class="testimonial-slide w-full flex-shrink-0 min-w-full p-6 sm:p-8 flex flex-col justify-between min-h-[380px] sm:min-h-[370px]">
-              <div class="space-y-4">
-                <div class="flex items-center justify-between">
-                  <span class="text-xs font-bold tracking-wider uppercase text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md">
-                    Branding &amp; Marketing
-                  </span>
-                  <div class="flex text-amber-400 text-sm tracking-tight" aria-label="5 out of 5 stars">
-                    ★★★★★
-                  </div>
-                </div>
-
-                <blockquote class="text-slate-600 text-sm sm:text-base leading-relaxed italic">
-                  "From brand style guidelines to high-converting social media visual assets and ad campaigns, Mark Digital gave our retail chain a distinctive identity that commands immediate buyer confidence."
-                </blockquote>
-              </div>
-
-              <div class="flex items-center gap-3 pt-5 border-t border-slate-100 mt-4">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-700 to-orange-600 text-white flex items-center justify-center font-bold text-lg font-heading shadow-xs">
-                  K
-                </div>
-                <div>
-                  <div class="font-bold text-brandDark text-sm sm:text-base">Kelechi Nnamdi</div>
-                  <div class="text-xs text-slate-500">Head of Brand &amp; Growth • Apex Retail Group</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 5: Folake Adeleke (Greenline Capital) -->
-            <div class="testimonial-slide w-full flex-shrink-0 min-w-full p-6 sm:p-8 flex flex-col justify-between min-h-[380px] sm:min-h-[370px]">
-              <div class="space-y-4">
-                <div class="flex items-center justify-between">
-                  <span class="text-xs font-bold tracking-wider uppercase text-cyan-800 bg-cyan-50 px-2.5 py-1 rounded-md">
-                    Corporate Systems
-                  </span>
-                  <div class="flex text-amber-400 text-sm tracking-tight" aria-label="5 out of 5 stars">
-                    ★★★★★
-                  </div>
-                </div>
-
-                <blockquote class="text-slate-600 text-sm sm:text-base leading-relaxed italic">
-                  "Working with Akor Mark and his engineering team was completely transparent. Every deliverable was executed on schedule with structured milestones. Truly dependable corporate tech partners."
-                </blockquote>
-              </div>
-
-              <div class="flex items-center gap-3 pt-5 border-t border-slate-100 mt-4">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-900 to-blue-700 text-white flex items-center justify-center font-bold text-lg font-heading shadow-xs">
-                  F
-                </div>
-                <div>
-                  <div class="font-bold text-brandDark text-sm sm:text-base">Folake Adeleke</div>
-                  <div class="text-xs text-slate-500">Executive Director • Greenline Capital LTD</div>
-                </div>
-              </div>
-            </div>
-
+            {% endfor %}
           </div>
 
           <!-- Bottom Control Bar: Dots & Auto-play indicator -->
@@ -992,13 +888,12 @@
             
             <!-- Dots Indicators -->
             <div class="flex items-center gap-1.5" role="tablist" aria-label="Testimonial slides">
-              <button type="button" class="testimonial-dot h-2 w-6 bg-brandBlue rounded-full transition-all duration-300 cursor-pointer" data-slide="0" aria-label="Slide 1" aria-selected="true"></button>
-              <button type="button" class="testimonial-dot h-2 w-2 bg-slate-300 hover:bg-slate-400 rounded-full transition-all duration-300 cursor-pointer" data-slide="1" aria-label="Slide 2" aria-selected="false"></button>
-              <button type="button" class="testimonial-dot h-2 w-2 bg-slate-300 hover:bg-slate-400 rounded-full transition-all duration-300 cursor-pointer" data-slide="2" aria-label="Slide 3" aria-selected="false"></button>
-              <button type="button" class="testimonial-dot h-2 w-2 bg-slate-300 hover:bg-slate-400 rounded-full transition-all duration-300 cursor-pointer" data-slide="3" aria-label="Slide 4" aria-selected="false"></button>
-              <button type="button" class="testimonial-dot h-2 w-2 bg-slate-300 hover:bg-slate-400 rounded-full transition-all duration-300 cursor-pointer" data-slide="4" aria-label="Slide 5" aria-selected="false"></button>
+              {% for item in testimonials %}
+              <button type="button" class="testimonial-dot h-2 {% if forloop.first %}w-6 bg-brandBlue{% else %}w-2 bg-slate-300 hover:bg-slate-400{% endif %} rounded-full transition-all duration-300 cursor-pointer" data-slide="{{ forloop.counter0 }}" aria-label="Slide {{ forloop.counter }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"></button>
+              {% endfor %}
             </div>
           </div>
+
 
         </div>
 
