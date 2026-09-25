@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -61,6 +61,7 @@
       background-color: #FFFFFF;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -144,7 +145,7 @@
           <svg class="w-3.5 h-3.5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
           <span>+234 811 789 7778</span>
         </a>
-        <span class="text-slate-400">•</span>
+        <span class="hidden sm:inline text-slate-400">•</span>
         <a href="mailto:markdigitalserviceslimited@gmail.com" class="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer">
           <svg class="w-3.5 h-3.5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           <span>markdigitalserviceslimited@gmail.com</span>
@@ -214,20 +215,21 @@
 
     <!-- Mobile Navigation Drawer -->
     <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-brandBorder px-4 pt-3 pb-6 space-y-3 shadow-xl">
-      <div class="flex flex-col space-y-2 text-base font-medium text-slate-600">
-        <a href="{% url 'core:home' %}" class="px-3 py-2 rounded-lg transition-colors mobile-link {% if request.path == '/' %}bg-blue-50 text-brandBlue font-bold{% else %}hover:bg-blue-50 hover:text-brandBlue text-slate-600{% endif %}">Home</a>
-        <a href="{% url 'core:services' %}" class="px-3 py-2 rounded-lg transition-colors mobile-link {% if request.path == '/services/' %}bg-blue-50 text-brandBlue font-bold{% else %}hover:bg-blue-50 hover:text-brandBlue text-slate-600{% endif %}">Our Services</a>
-        <a href="{% url 'core:portfolio' %}" class="px-3 py-2 rounded-lg transition-colors mobile-link {% if request.path == '/portfolio/' %}bg-blue-50 text-brandBlue font-bold{% else %}hover:bg-blue-50 hover:text-brandBlue text-slate-600{% endif %}">Milestone & Proof</a>
-        <a href="{% url 'core:about' %}" class="px-3 py-2 rounded-lg transition-colors mobile-link {% if request.path == '/about/' %}bg-blue-50 text-brandBlue font-bold{% else %}hover:bg-blue-50 hover:text-brandBlue text-slate-600{% endif %}">About Us & Corporate Governance</a>
-        <a href="/#faq" class="px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-brandBlue text-slate-600 transition-colors mobile-link">Frequently Asked Questions</a>
-        <a href="{% url 'core:contact' %}" class="px-3 py-2 rounded-lg transition-colors mobile-link {% if request.path == '/contact/' %}bg-blue-50 text-brandBlue font-bold{% else %}hover:bg-blue-50 hover:text-brandBlue text-slate-600{% endif %}">Contact & Office</a>
+      <div class="flex flex-col space-y-1.5 text-base font-medium text-slate-600">
+        <a href="{% url 'core:home' %}" class="px-3.5 py-2.5 min-h-[44px] flex items-center rounded-lg transition-colors mobile-link {% if request.path == '/' %}bg-blue-50 text-brandBlue font-bold{% else %}hover:bg-blue-50 hover:text-brandBlue text-slate-600{% endif %}">Home</a>
+        <a href="{% url 'core:services' %}" class="px-3.5 py-2.5 min-h-[44px] flex items-center rounded-lg transition-colors mobile-link {% if request.path == '/services/' %}bg-blue-50 text-brandBlue font-bold{% else %}hover:bg-blue-50 hover:text-brandBlue text-slate-600{% endif %}">Our Services</a>
+        <a href="{% url 'core:portfolio' %}" class="px-3.5 py-2.5 min-h-[44px] flex items-center rounded-lg transition-colors mobile-link {% if request.path == '/portfolio/' %}bg-blue-50 text-brandBlue font-bold{% else %}hover:bg-blue-50 hover:text-brandBlue text-slate-600{% endif %}">Milestone & Proof</a>
+        <a href="{% url 'core:about' %}" class="px-3.5 py-2.5 min-h-[44px] flex items-center rounded-lg transition-colors mobile-link {% if request.path == '/about/' %}bg-blue-50 text-brandBlue font-bold{% else %}hover:bg-blue-50 hover:text-brandBlue text-slate-600{% endif %}">About Us & Corporate Governance</a>
+        <a href="/#faq" class="px-3.5 py-2.5 min-h-[44px] flex items-center rounded-lg hover:bg-blue-50 hover:text-brandBlue text-slate-600 transition-colors mobile-link">Frequently Asked Questions</a>
+        <a href="{% url 'core:contact' %}" class="px-3.5 py-2.5 min-h-[44px] flex items-center rounded-lg transition-colors mobile-link {% if request.path == '/contact/' %}bg-blue-50 text-brandBlue font-bold{% else %}hover:bg-blue-50 hover:text-brandBlue text-slate-600{% endif %}">Contact & Office</a>
       </div>
-      <div class="pt-4 border-t border-slate-100 flex flex-col gap-2">
-        <a href="{% url 'core:contact' %}" class="btn-primary w-full py-3 text-sm mobile-link">
+      <div class="pt-4 border-t border-slate-100 flex flex-col gap-2.5">
+        <a href="{% url 'core:contact' %}" class="btn-primary w-full py-3.5 text-sm mobile-link">
           Request a Free Quote
         </a>
-        <a href="https://wa.me/2348117897778" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full py-2.5 text-sm">
-          Chat Directly on WhatsApp
+        <a href="https://wa.me/2348117897778" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full py-3 text-sm flex items-center justify-center gap-2">
+          <svg class="w-4 h-4 fill-emerald-600" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-1.996-.465-1.666-.69-2.738-2.39-2.822-2.502-.083-.112-.676-.901-.676-1.718 0-.817.429-1.218.582-1.383.153-.165.334-.206.445-.206.111 0 .222 0 .32.005.105.005.244-.04.382.291.144.344.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.188-.173.289-.087.102-.183.228-.261.306-.088.087-.179.182-.077.357.102.175.454.748.975 1.211.673.599 1.24.786 1.416.873.175.088.278.073.382-.045.105-.118.445-.518.563-.695.118-.178.236-.148.397-.089.161.059 1.02.481 1.196.569.175.088.293.133.336.207.043.074.043.431-.101.836z"/></svg>
+          <span>Chat Directly on WhatsApp</span>
         </a>
       </div>
     </div>
