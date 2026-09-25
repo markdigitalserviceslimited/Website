@@ -348,7 +348,11 @@ def portfolio_view(request):
 
 
 def contact_view(request):
-    form = QuoteRequestForm()
+    initial = {}
+    service_param = request.GET.get('service')
+    if service_param:
+        initial['service_needed'] = service_param.replace('-', '_')
+    form = QuoteRequestForm(initial=initial)
     if request.method == 'POST':
         form = QuoteRequestForm(request.POST)
         if form.is_valid():

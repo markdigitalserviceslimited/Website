@@ -52,7 +52,7 @@
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-              <a href="#quote-section" class="btn-primary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer shadow-lg shadow-brandBlue/30">
+              <a href="{% url 'core:contact' %}" class="btn-primary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer shadow-lg shadow-brandBlue/30">
                 <span>Request a Free Quote</span>
                 <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </a>
@@ -176,7 +176,7 @@
                 <span>Explore Web Services</span>
                 <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </a>
-              <a href="#quote-section" class="btn-secondary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
+              <a href="{% url 'core:contact' %}?service=web-development" class="btn-secondary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
                 <span>Request Web Quote</span>
               </a>
               <a href="https://wa.me/2348117897778" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full sm:w-auto px-6 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
@@ -293,7 +293,7 @@
                 <span>View Marketing Solutions</span>
                 <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </a>
-              <a href="#quote-section" class="btn-secondary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
+              <a href="{% url 'core:contact' %}?service=social-media" class="btn-secondary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
                 <span>Request a Free Quote</span>
               </a>
               <a href="https://wa.me/2348117897778" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full sm:w-auto px-6 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
@@ -410,7 +410,7 @@
                 <span>Join Training Programs</span>
                 <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </a>
-              <a href="#quote-section" class="btn-secondary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
+              <a href="{% url 'core:contact' %}?service=tech-training" class="btn-secondary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
                 <span>Corporate Training Inquiry</span>
               </a>
               <a href="https://wa.me/2348117897778" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full sm:w-auto px-6 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
@@ -741,12 +741,12 @@
           </div>
         </div>
 
-        <!-- Action Link (Issue 17: High-contrast Solid Primary CTA Button) -->
+        <!-- Action Link (High-contrast Solid Primary CTA Button) -->
         <div class="pt-4 border-t border-slate-100">
-          <button onclick="selectServiceForQuote('{{ service.slug }}')" class="btn-primary w-full py-3 px-4 text-xs font-semibold justify-between group-hover:bg-brandNavy transition-all cursor-pointer">
+          <a href="{% url 'core:contact' %}?service={{ service.slug }}" class="btn-primary w-full py-3 px-4 text-xs font-semibold justify-between group-hover:bg-brandNavy transition-all cursor-pointer inline-flex items-center">
             <span>Request a Quote for This Service</span>
             <svg class="w-4 h-4 ml-1 text-white group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </button>
+          </a>
         </div>
 
       </div>
@@ -804,7 +804,7 @@
 
         <!-- Action Button (Unified button system) -->
         <div class="pt-4">
-          <a href="#quote-section" class="btn-secondary w-full sm:w-auto px-6 py-3.5 text-sm cursor-pointer inline-flex items-center justify-center">
+          <a href="{% url 'core:contact' %}" class="btn-secondary w-full sm:w-auto px-6 py-3.5 text-sm cursor-pointer inline-flex items-center justify-center">
             <span>Discuss a Growth Strategy for Your Brand</span>
             <svg class="w-4 h-4 ml-1.5 text-brandBlue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
@@ -1089,249 +1089,30 @@
 </section>
 
 <!-- =========================================================================
-     7. REQUEST A QUOTE & OFFICE CONTACT SECTION (PRIMARY CONVERSION)
+     7. READY TO START YOUR NEXT PROJECT? (CTA BANNER)
      ========================================================================= -->
-<section id="quote-section" class="py-20 lg:py-28 bg-brandLight border-t border-brandBorder">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100/70 text-brandNavy text-xs font-semibold">
-        <span>LET'S BUILD TOGETHER</span>
-      </div>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brandDark tracking-tight font-heading">
-        Request a Free Project Quote & Consultation
-      </h2>
-      <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
-        Tell us about your requirements. We analyze your scope and provide a transparent, fixed quotation and implementation timeline within 24 hours.
-      </p>
+<section class="py-16 sm:py-24 bg-gradient-to-b from-blue-50/70 to-white border-t border-brandBorder">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100 text-brandNavy text-xs font-semibold">
+      <span class="w-2 h-2 rounded-full bg-brandBlue"></span>
+      <span>LET'S BUILD TOGETHER</span>
     </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-      
-      <!-- Left Column: Interactive Quote Request Form -->
-      <div class="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-10 border border-slate-200/90 shadow-soft">
-        
-        <div id="form-feedback" class="hidden mb-6 p-4 rounded-xl border text-sm"></div>
-
-        <form id="quote-form" method="POST" action="{% url 'core:home' %}#quote-section" class="space-y-6">
-          {% csrf_token %}
-
-          <!-- Service Selection (Issues 4 & 9: Balanced 3x2 Grid and Labeled Matching Dropdown) -->
-          <div class="space-y-3">
-            <label id="service-selector-label" class="block text-xs font-bold text-slate-600 uppercase tracking-wide">
-              Select Primary Service Category <span class="text-red-600">*</span>
-            </label>
-            <div role="radiogroup" aria-labelledby="service-selector-label" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-              <button type="button" role="radio" aria-checked="true" onclick="selectServiceForQuote('web-development')" data-value="web-development" class="service-pill w-full py-2.5 px-3 rounded-lg text-xs font-medium border border-brandBlue bg-brandBlue text-white cursor-pointer transition-colors text-center">
-                Website & Software
-              </button>
-              <button type="button" role="radio" aria-checked="false" onclick="selectServiceForQuote('social-media')" data-value="social-media" class="service-pill w-full py-2.5 px-3 rounded-lg text-xs font-medium border border-slate-200 bg-white text-slate-600 hover:border-slate-300 cursor-pointer transition-colors text-center">
-                Social Media
-              </button>
-              <button type="button" role="radio" aria-checked="false" onclick="selectServiceForQuote('digital-marketing')" data-value="digital-marketing" class="service-pill w-full py-2.5 px-3 rounded-lg text-xs font-medium border border-slate-200 bg-white text-slate-600 hover:border-slate-300 cursor-pointer transition-colors text-center">
-                Digital Marketing
-              </button>
-              <button type="button" role="radio" aria-checked="false" onclick="selectServiceForQuote('digital-branding')" data-value="digital-branding" class="service-pill w-full py-2.5 px-3 rounded-lg text-xs font-medium border border-slate-200 bg-white text-slate-600 hover:border-slate-300 cursor-pointer transition-colors text-center">
-                Branding & Creative
-              </button>
-              <button type="button" role="radio" aria-checked="false" onclick="selectServiceForQuote('tech-training')" data-value="tech-training" class="service-pill w-full py-2.5 px-3 rounded-lg text-xs font-medium border border-slate-200 bg-white text-slate-600 hover:border-slate-300 cursor-pointer transition-colors text-center">
-                Tech Training
-              </button>
-              <button type="button" role="radio" aria-checked="false" onclick="selectServiceForQuote('ict-supply')" data-value="ict-supply" class="service-pill w-full py-2.5 px-3 rounded-lg text-xs font-medium border border-slate-200 bg-white text-slate-600 hover:border-slate-300 cursor-pointer transition-colors text-center">
-                ICT Equipment Supply
-              </button>
-            </div>
-
-            <!-- Issue 9: Visible, properly labeled dropdown matching all form inputs -->
-            <div class="pt-1.5">
-              <label for="{{ form.service_needed.id_for_label }}" class="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-1">
-                Select Specific Service <span class="text-red-600">*</span>
-              </label>
-              {{ form.service_needed }}
-              {% if form.service_needed.errors %}
-                <p class="text-red-600 text-xs mt-1">{{ form.service_needed.errors.0 }}</p>
-              {% endif %}
-            </div>
-          </div>
-
-          <!-- Name & Business Name -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="{{ form.full_name.id_for_label }}" class="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-1">
-                Your Full Name <span class="text-red-600">*</span>
-              </label>
-              {{ form.full_name }}
-              {% if form.full_name.errors %}
-                <p class="text-red-600 text-xs mt-1">{{ form.full_name.errors.0 }}</p>
-              {% endif %}
-            </div>
-            <div>
-              <label for="{{ form.business_name.id_for_label }}" class="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-1">
-                Organization / Business Name
-              </label>
-              {{ form.business_name }}
-            </div>
-          </div>
-
-          <!-- Email & Phone/WhatsApp -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="{{ form.email.id_for_label }}" class="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-1">
-                Email Address <span class="text-red-600">*</span>
-              </label>
-              {{ form.email }}
-              {% if form.email.errors %}
-                <p class="text-red-600 text-xs mt-1">{{ form.email.errors.0 }}</p>
-              {% endif %}
-            </div>
-            <div>
-              <label for="{{ form.phone_or_whatsapp.id_for_label }}" class="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-1">
-                Phone / WhatsApp Number <span class="text-red-600">*</span>
-              </label>
-              {{ form.phone_or_whatsapp }}
-              {% if form.phone_or_whatsapp.errors %}
-                <p class="text-red-600 text-xs mt-1">{{ form.phone_or_whatsapp.errors.0 }}</p>
-              {% endif %}
-            </div>
-          </div>
-
-          <!-- Project Description -->
-          <div>
-            <label for="{{ form.project_description.id_for_label }}" class="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-1">
-              Project Description & Requirements <span class="text-red-600">*</span>
-            </label>
-            {{ form.project_description }}
-            {% if form.project_description.errors %}
-              <p class="text-red-600 text-xs mt-1">{{ form.project_description.errors.0 }}</p>
-            {% endif %}
-          </div>
-
-          <!-- Budget & Timeline -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="{{ form.estimated_budget.id_for_label }}" class="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-1">
-                Estimated Budget Range
-              </label>
-              {{ form.estimated_budget }}
-            </div>
-            <div>
-              <label for="{{ form.timeline.id_for_label }}" class="block text-xs font-bold text-slate-600 uppercase tracking-wide mb-1">
-                Desired Timeline
-              </label>
-              {{ form.timeline }}
-            </div>
-          </div>
-
-          <!-- Submit Button (Unified Primary Button) -->
-          <div class="pt-2">
-            <button id="submit-btn" type="submit" class="btn-primary w-full py-4 text-base cursor-pointer">
-              <span id="btn-text">Submit Project Enquiry & Request Quote</span>
-              <svg id="btn-arrow" class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </button>
-            <p class="text-xs text-center text-slate-400 mt-3">
-              We respect your privacy. Inquiries are processed securely under our privacy policy.
-            </p>
-          </div>
-
-        </form>
-
-      </div>
-
-      <!-- Right Column: Direct Office Contact & Coordinates -->
-      <div id="contact-section" class="lg:col-span-5 space-y-6">
-        
-        <div class="bg-white rounded-2xl p-7 sm:p-8 border border-slate-200/90 shadow-soft space-y-6">
-          <h3 class="text-xl font-bold text-brandDark font-heading">
-            Contact & Office Details
-          </h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Prefer direct communication? Reach our team directly via phone, WhatsApp, email, or schedule an in-person meeting at our registered office.
-          </p>
-
-          <div class="space-y-4 pt-2 text-sm">
-            
-            <!-- Address -->
-            <div class="flex items-start gap-3.5">
-              <div class="w-10 h-10 rounded-lg bg-blue-50 text-brandBlue flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              </div>
-              <div>
-                <div class="text-xs font-bold text-slate-400 uppercase">Registered Office Address</div>
-                <div class="text-brandDark font-medium">2, Rock Garden Avenue, Along Ganaja Road, Kogi State, Nigeria</div>
-              </div>
-            </div>
-
-            <!-- Phone -->
-            <div class="flex items-start gap-3.5">
-              <div class="w-10 h-10 rounded-lg bg-blue-50 text-brandBlue flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-              </div>
-              <div>
-                <div class="text-xs font-bold text-slate-400 uppercase">Direct Telephone Line</div>
-                <a href="tel:+2348117897778" class="text-brandBlue font-semibold hover:underline">+234 811 789 7778</a>
-              </div>
-            </div>
-
-            <!-- WhatsApp -->
-            <div class="flex items-start gap-3.5">
-              <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-1.996-.465-1.666-.69-2.738-2.39-2.822-2.502-.083-.112-.676-.901-.676-1.718 0-.817.429-1.218.582-1.383.153-.165.334-.206.445-.206.111 0 .222 0 .32.005.105.005.244-.04.382.291.144.344.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.188-.173.289-.087.102-.183.228-.261.306-.088.087-.179.182-.077.357.102.175.454.748.975 1.211.673.599 1.24.786 1.416.873.175.088.278.073.382-.045.105-.118.445-.518.563-.695.118-.178.236-.148.397-.089.161.059 1.02.481 1.196.569.175.088.293.133.336.207.043.074.043.431-.101.836z"/></svg>
-              </div>
-              <div>
-                <div class="text-xs font-bold text-slate-400 uppercase">Official WhatsApp Channel</div>
-                <a href="https://wa.me/2348117897778" target="_blank" rel="noopener noreferrer" class="text-emerald-600 font-semibold hover:underline">+234 811 789 7778</a>
-              </div>
-            </div>
-
-            <!-- Email -->
-            <div class="flex items-start gap-3.5">
-              <div class="w-10 h-10 rounded-lg bg-blue-50 text-brandBlue flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 fill-none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              </div>
-              <div>
-                <div class="text-xs font-bold text-slate-400 uppercase">Official Inquiries Email</div>
-                <a href="mailto:markdigitalserviceslimited@gmail.com" class="text-brandBlue font-semibold hover:underline break-all">markdigitalserviceslimited@gmail.com</a>
-              </div>
-            </div>
-
-            <!-- Hours -->
-            <div class="flex items-start gap-3.5 pt-2 border-t border-slate-100">
-              <div class="w-10 h-10 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              </div>
-              <div>
-                <div class="text-xs font-bold text-slate-400 uppercase">Business Working Hours (WAT)</div>
-                <div class="text-slate-600 text-xs">Mon – Fri: 9:00 AM – 5:00 PM</div>
-                <div class="text-slate-600 text-xs">Saturday: 10:00 AM – 2:00 PM</div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- Social Channels Card (Issues 8 & 10: Horizontal alignment and balanced contrast) -->
-        <div class="bg-white rounded-2xl p-7 sm:p-8 border border-slate-200/90 shadow-soft space-y-4">
-          <h4 class="font-bold text-base font-heading text-brandDark">Connect on Social Platforms</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            Follow our company insights, client growth case studies, and official announcements across verified channels.
-          </p>
-          <div class="grid grid-cols-2 gap-3 pt-1">
-            <a href="https://www.linkedin.com/company/mdg-ltd/" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-lg border border-slate-200 hover:border-brandBlue hover:bg-blue-50 text-xs font-semibold text-slate-700 hover:text-brandBlue transition-colors flex items-center justify-center gap-2">
-              <svg class="w-4 h-4 fill-current text-blue-600" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              <span>LinkedIn</span>
-            </a>
-            <a href="https://web.facebook.com/mark.akor.210789/" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-lg border border-slate-200 hover:border-brandBlue hover:bg-blue-50 text-xs font-semibold text-slate-700 hover:text-brandBlue transition-colors flex items-center justify-center gap-2">
-              <svg class="w-4 h-4 fill-current text-blue-700" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-              <span>Facebook</span>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brandDark tracking-tight font-heading">
+      Ready to Start Your Next Project?
+    </h2>
+    <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+      Tell us about your requirements. We analyze your scope and provide a transparent, fixed quotation and implementation timeline within 24 hours.
+    </p>
+    <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="{% url 'core:contact' %}" class="btn-primary w-full sm:w-auto px-8 py-4 text-base cursor-pointer shadow-md inline-flex items-center justify-center min-h-[48px]">
+        <span>Request a Free Quote &amp; Consultation</span>
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+      <a href="https://wa.me/2348117897778?text=Hello%20Mark%20Digital%20Services%20LTD%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="btn-secondary w-full sm:w-auto px-7 py-4 text-base cursor-pointer inline-flex items-center justify-center gap-2 min-h-[48px]">
+        <svg class="w-5 h-5 text-emerald-600 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-1.996-.465-1.666-.69-2.738-2.39-2.822-2.502-.083-.112-.676-.901-.676-1.718 0-.817.429-1.218.582-1.383.153-.165.334-.206.445-.206.111 0 .222 0 .32.005.105.005.244-.04.382.291.144.344.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.188-.173.289-.087.102-.183.228-.261.306-.088.087-.179.182-.077.357.102.175.454.748.975 1.211.673.599 1.24.786 1.416.873.175.088.278.073.382-.045.105-.118.445-.518.563-.695.118-.178.236-.148.397-.089.161.059 1.02.481 1.196.569.175.088.293.133.336.207.043.074.043.431-.101.836z"/></svg>
+        <span>Chat on WhatsApp</span>
+      </a>
     </div>
-
   </div>
 </section>
 
@@ -1375,54 +1156,6 @@
 
 {% block extra_scripts %}
 <script>
-  // AJAX submission for smooth UX on quote form
-  const quoteForm = document.getElementById('quote-form');
-  const feedbackBox = document.getElementById('form-feedback');
-  const submitBtn = document.getElementById('submit-btn');
-  const btnText = document.getElementById('btn-text');
-
-  if (quoteForm) {
-    quoteForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-
-      // UI loading state
-      if (btnText) btnText.textContent = 'Submitting Enquiry...';
-      if (submitBtn) submitBtn.disabled = true;
-
-      const formData = new FormData(quoteForm);
-
-      try {
-        const response = await fetch(quoteForm.action, {
-          method: 'POST',
-          headers: {
-            'X-Requested-With': 'XMLHttpRequest',
-          },
-          body: formData,
-        });
-
-        const data = await response.json();
-
-        if (response.ok && data.status === 'success') {
-          feedbackBox.className = 'mb-6 p-4 rounded-xl border text-sm bg-emerald-50 border-emerald-200 text-emerald-800';
-          feedbackBox.textContent = data.message;
-          feedbackBox.classList.remove('hidden');
-          quoteForm.reset();
-          feedbackBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          feedbackBox.className = 'mb-6 p-4 rounded-xl border text-sm bg-red-50 border-red-200 text-red-800';
-          feedbackBox.textContent = 'Please check the form fields and ensure all required information is provided.';
-          feedbackBox.classList.remove('hidden');
-        }
-      } catch (err) {
-        // Fallback to normal submit if fetch fails
-        quoteForm.submit();
-      } finally {
-        if (btnText) btnText.textContent = 'Submit Project Enquiry & Request Quote';
-        if (submitBtn) submitBtn.disabled = false;
-      }
-    });
-  }
-
   // ==========================================
   // Full-Width Hero Showcase Carousel Controller
   // ==========================================
