@@ -5,136 +5,647 @@
 <!-- =========================================================================
      1. HERO SECTION
      ========================================================================= -->
-<section class="relative bg-gradient-to-b from-blue-50/50 via-white to-white pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden">
-  <!-- Subtle decorative light pattern -->
-  <div class="absolute inset-0 pointer-events-none opacity-40">
-    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-blue-100/60 blur-3xl"></div>
-    <div class="absolute top-1/2 -left-24 w-96 h-96 rounded-full bg-sky-100/50 blur-3xl"></div>
-  </div>
+<!-- =========================================================================
+     1. FULL-WIDTH HERO CAROUSEL SECTION
+     ========================================================================= -->
+<section id="hero-carousel-section" class="relative bg-brandDark text-white overflow-hidden select-none min-h-[660px] sm:min-h-[620px] lg:min-h-[640px] flex items-center" role="region" aria-roledescription="carousel" aria-label="Mark Digital Services Showcase Carousel" tabindex="0">
 
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+  <!-- Slides Wrapper Track -->
+  <div id="hero-slides-wrapper" class="relative w-full h-full min-h-[660px] sm:min-h-[620px] lg:min-h-[640px] flex items-center" aria-live="polite">
+
+    <!-- SLIDE 1: Main Brand & Comprehensive Digital Suite -->
+    <div class="hero-slide absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out opacity-100 z-10 flex items-center"
+         role="group"
+         aria-roledescription="slide"
+         aria-label="1 of 5: Digital Solutions That Help You Build, Connect & Grow"
+         data-slide-index="0">
       
-      <!-- Left Column: Copy & CTAs -->
-      <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-        
-        <!-- Category Pill Badge -->
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-brandNavy text-xs font-semibold shadow-xs">
-          <span class="w-2 h-2 rounded-full bg-brandBlue"></span>
-          <span>Practical Digital Solutions for Modern Businesses & People</span>
-        </div>
-
-        <!-- Main Headline (Consistent 9-step Type Scale: text-xs through text-5xl) -->
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brandDark tracking-tight leading-[1.15]">
-          Digital Solutions That Help You 
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandNavy via-brandBlue to-brandSky">
-            Build, Connect & Grow.
-          </span>
-        </h1>
-
-        <!-- Supporting Value Copy -->
-        <p class="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
-          Mark Digital Services LTD delivers tailored website engineering, strategic digital branding, social media growth, practical technology training, and genuine ICT equipment supply. Practical results without technical confusion.
-        </p>
-
-        <!-- CTAs Group (Unified 2-tier Button System: Issues 1 & 15) -->
-        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-          <a href="#quote-section" class="btn-primary w-full sm:w-auto px-7 py-3.5 text-base cursor-pointer">
-            <span>Request a Free Quote</span>
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </a>
-
-          <a href="#services" class="btn-secondary w-full sm:w-auto px-7 py-3.5 text-base cursor-pointer">
-            <span>Explore Services</span>
-          </a>
-
-          <a href="https://wa.me/2348117897778" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full sm:w-auto px-6 py-3.5 text-base cursor-pointer">
-            <svg class="w-5 h-5 mr-2 fill-emerald-600" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-1.996-.465-1.666-.69-2.738-2.39-2.822-2.502-.083-.112-.676-.901-.676-1.718 0-.817.429-1.218.582-1.383.153-.165.334-.206.445-.206.111 0 .222 0 .32.005.105.005.244-.04.382.291.144.344.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.188-.173.289-.087.102-.183.228-.261.306-.088.087-.179.182-.077.357.102.175.454.748.975 1.211.673.599 1.24.786 1.416.873.175.088.278.073.382-.045.105-.118.445-.518.563-.695.118-.178.236-.148.397-.089.161.059 1.02.481 1.196.569.175.088.293.133.336.207.043.074.043.431-.101.836z"/></svg>
-            <span>WhatsApp Us</span>
-          </a>
-        </div>
-
-        <!-- Trust Features Checklist -->
-        <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-y-2 gap-x-6 text-xs text-slate-400 font-medium">
-          <div class="flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            <span>Incorporated Nigerian Firm</span>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            <span>Transparent Scope & Fixed Quotes</span>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            <span>Nationwide & Remote Delivery</span>
-          </div>
-        </div>
-
+      <!-- Background Image with Zoom & Dark Ambient Overlay -->
+      <div class="absolute inset-0 overflow-hidden">
+        <img src="{% static 'images/carousel/hero-main.jpg' %}" 
+             alt="Mark Digital Services Technology Solutions" 
+             class="w-full h-full object-cover transform scale-100 transition-transform duration-7000 ease-out">
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/60 lg:to-slate-900/40"></div>
+        <div class="absolute inset-0 bg-slate-950/40"></div>
       </div>
 
-      <!-- Right Column: Corporate Verification & Trust Credentials (Issues 2, 5, 16) -->
-      <div class="lg:col-span-5">
-        <div class="relative mx-auto max-w-md lg:max-w-none">
+      <!-- Content Container -->
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-24 sm:py-16 lg:py-24 h-full flex items-center z-10 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
           
-          <!-- Outer border card with subtle glow -->
-          <div class="rounded-2xl p-1 bg-gradient-to-tr from-brandNavy via-brandBlue to-sky-400 shadow-card-hover">
-            <div class="rounded-[14px] bg-brandDark text-white p-6 sm:p-8 space-y-6">
-              
-              <!-- Card Header -->
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-                <div class="flex items-center gap-3">
-                  <div class="w-11 h-11 rounded-lg bg-white p-1 flex items-center justify-center flex-shrink-0">
-                    <img src="{% static 'images/logo.jpeg' %}" alt="Logo" class="w-full h-full object-contain">
+          <!-- Left Column: Copy & CTAs -->
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/30 text-sky-300 text-xs font-semibold backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+              <span>Practical Digital Solutions for Modern Businesses &amp; People</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15] font-heading">
+              Digital Solutions That Help You 
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-sky-200 to-blue-400 block sm:inline">
+                Build, Connect &amp; Grow.
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+              Mark Digital Services LTD delivers tailored website engineering, strategic digital branding, social media growth, practical technology training, and genuine ICT equipment supply. Practical results without technical confusion.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+              <a href="#quote-section" class="btn-primary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer shadow-lg shadow-brandBlue/30">
+                <span>Request a Free Quote</span>
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+              <a href="#services" class="btn-secondary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
+                <span>Explore Services</span>
+              </a>
+              <a href="https://wa.me/2348117897778" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full sm:w-auto px-6 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
+                <svg class="w-5 h-5 mr-2 fill-emerald-400" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-1.996-.465-1.666-.69-2.738-2.39-2.822-2.502-.083-.112-.676-.901-.676-1.718 0-.817.429-1.218.582-1.383.153-.165.334-.206.445-.206.111 0 .222 0 .32.005.105.005.244-.04.382.291.144.344.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.188-.173.289-.087.102-.183.228-.261.306-.088.087-.179.182-.077.357.102.175.454.748.975 1.211.673.599 1.24.786 1.416.873.175.088.278.073.382-.045.105-.118.445-.518.563-.695.118-.178.236-.148.397-.089.161.059 1.02.481 1.196.569.175.088.293.133.336.207.043.074.043.431-.101.836z"/></svg>
+                <span>WhatsApp Us</span>
+              </a>
+            </div>
+
+            <div class="pt-3 hidden sm:flex flex-wrap items-center justify-center lg:justify-start gap-y-2 gap-x-6 text-xs text-slate-300 font-medium">
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Incorporated Nigerian Firm</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Transparent Scope &amp; Fixed Quotes</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Nationwide &amp; Remote Delivery</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Corporate Governance Profile Card -->
+          <div class="hidden lg:block lg:col-span-5">
+            <div class="relative mx-auto max-w-md lg:max-w-none">
+              <div class="rounded-2xl p-1 bg-gradient-to-tr from-brandNavy via-brandBlue to-sky-400 shadow-2xl backdrop-blur-md">
+                <div class="rounded-[14px] bg-brandDark/95 text-white p-6 sm:p-7 space-y-5 border border-white/10">
+                  <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-lg bg-white p-1 flex items-center justify-center flex-shrink-0">
+                        <img src="{% static 'images/logo.jpeg' %}" alt="Logo" class="w-full h-full object-contain">
+                      </div>
+                      <div>
+                        <div class="font-bold text-sm tracking-wide">MARK DIGITAL SERVICES LTD</div>
+                        <div class="text-xs text-slate-300">Corporate Governance Profile</div>
+                      </div>
+                    </div>
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-1.5"></span>
+                      Active Entity
+                    </span>
                   </div>
-                  <div>
-                    <div class="font-bold text-sm tracking-wide">MARK DIGITAL SERVICES LTD</div>
-                    <div class="text-xs text-slate-300">Corporate Governance Profile</div>
+
+                  <div class="space-y-2.5 text-xs sm:text-sm">
+                    <div class="flex justify-between py-1.5 border-b border-slate-800/80">
+                      <span class="text-slate-400">Entity Type:</span>
+                      <strong class="text-emerald-400 font-semibold text-sm">Private Company Limited by Shares</strong>
+                    </div>
+                    <div class="flex justify-between py-1.5 border-b border-slate-800/80">
+                      <span class="text-slate-400">Operating Status:</span>
+                      <span class="text-white font-medium">Active &amp; In Good Standing</span>
+                    </div>
+                    <div class="flex justify-between py-1.5 border-b border-slate-800/80">
+                      <span class="text-slate-400">Director &amp; Signatory:</span>
+                      <span class="text-white font-medium">Akor Mark Akoji</span>
+                    </div>
+                    <div class="flex justify-between py-1.5">
+                      <span class="text-slate-400">Registered Office:</span>
+                      <span class="text-slate-300 text-right max-w-[200px] leading-tight">Ganaja Road, Kogi State, Nigeria</span>
+                    </div>
+                  </div>
+
+                  <div class="pt-1">
+                    <a href="#about-governance" class="btn-secondary w-full py-2.5 px-4 text-xs font-semibold justify-center gap-2 hover:bg-slate-100 transition-all cursor-pointer">
+                      <span>View Corporate Governance &amp; Leadership</span>
+                      <svg class="w-4 h-4 ml-1 text-brandBlue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
                   </div>
                 </div>
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-1.5"></span>
-                  Active Entity
-                </span>
               </div>
-
-              <!-- Official Registry Breakdown -->
-              <div class="space-y-3 text-xs sm:text-sm">
-                <div class="flex justify-between py-2 border-b border-slate-800/80">
-                  <span class="text-slate-400">Entity Type:</span>
-                  <strong class="text-emerald-400 font-semibold text-sm">Private Company Limited by Shares</strong>
-                </div>
-                <div class="flex justify-between py-2 border-b border-slate-800/80">
-                  <span class="text-slate-400">Operating Status:</span>
-                  <span class="text-white font-medium">Active &amp; In Good Standing</span>
-                </div>
-                <div class="flex justify-between py-2 border-b border-slate-800/80">
-                  <span class="text-slate-400">Director & Signatory:</span>
-                  <span class="text-white font-medium">Akor Mark Akoji</span>
-                </div>
-                <div class="flex justify-between py-2 border-b border-slate-800/80">
-                  <span class="text-slate-400">Registered Office:</span>
-                  <span class="text-slate-300 text-right max-w-[200px] leading-tight">Ganaja Road, Kogi State, Nigeria</span>
-                </div>
-              </div>
-
-              <!-- Prominent Full-Width Call-to-Action -->
-              <div class="pt-2">
-                <a href="#about-governance" class="btn-secondary w-full py-3 px-4 text-xs font-semibold justify-center gap-2 hover:bg-slate-100 transition-all cursor-pointer">
-                  <span>View Corporate Governance &amp; Leadership</span>
-                  <svg class="w-4 h-4 ml-1 text-brandBlue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </a>
-              </div>
-
             </div>
           </div>
 
         </div>
       </div>
-
     </div>
 
-    <!-- Trust Stats Bar -->
-    <div class="mt-16 pt-10 border-t border-slate-200/80 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <!-- SLIDE 2: Web Design & Software Engineering -->
+    <div class="hero-slide absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out opacity-0 z-0 pointer-events-none flex items-center"
+         role="group"
+         aria-roledescription="slide"
+         aria-label="2 of 5: High-Performance Websites & Custom Web Applications"
+         data-slide-index="1">
+      
+      <div class="absolute inset-0 overflow-hidden">
+        <img src="{% static 'images/carousel/web-development.jpg' %}" 
+             alt="Web development and software engineering at Mark Digital" 
+             class="w-full h-full object-cover transform scale-100 transition-transform duration-7000 ease-out">
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/60 lg:to-slate-900/40"></div>
+        <div class="absolute inset-0 bg-slate-950/40"></div>
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-24 sm:py-16 lg:py-24 h-full flex items-center z-10 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
+          
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-300 text-xs font-semibold backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+              <span>Web &amp; Software Engineering</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15] font-heading">
+              High-Performance Websites &amp; 
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-sky-200 to-cyan-300 block sm:inline">
+                Custom Web Applications.
+              </span>
+            </h2>
+
+            <p class="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+              Scalable, responsive web solutions engineered for maximum speed, intuitive user experience, and measurable conversion. From corporate business portals to custom software architectures.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+              <a href="{% url 'core:services' %}#web-development" class="btn-primary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer shadow-lg shadow-brandBlue/30">
+                <span>Explore Web Services</span>
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+              <a href="#quote-section" class="btn-secondary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
+                <span>Request Web Quote</span>
+              </a>
+              <a href="https://wa.me/2348117897778" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full sm:w-auto px-6 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
+                <svg class="w-5 h-5 mr-2 fill-emerald-400" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-1.996-.465-1.666-.69-2.738-2.39-2.822-2.502-.083-.112-.676-.901-.676-1.718 0-.817.429-1.218.582-1.383.153-.165.334-.206.445-.206.111 0 .222 0 .32.005.105.005.244-.04.382.291.144.344.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.188-.173.289-.087.102-.183.228-.261.306-.088.087-.179.182-.077.357.102.175.454.748.975 1.211.673.599 1.24.786 1.416.873.175.088.278.073.382-.045.105-.118.445-.518.563-.695.118-.178.236-.148.397-.089.161.059 1.02.481 1.196.569.175.088.293.133.336.207.043.074.043.431-.101.836z"/></svg>
+                <span>WhatsApp Us</span>
+              </a>
+            </div>
+
+            <div class="pt-3 hidden sm:flex flex-wrap items-center justify-center lg:justify-start gap-y-2 gap-x-6 text-xs text-slate-300 font-medium">
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Custom Architecture</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Mobile First &amp; Ultra-Fast</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Enterprise Security</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Web Engineering Spec Card -->
+          <div class="hidden lg:block lg:col-span-5">
+            <div class="relative mx-auto max-w-md lg:max-w-none">
+              <div class="rounded-2xl p-1 bg-gradient-to-tr from-brandBlue via-sky-500 to-cyan-300 shadow-2xl backdrop-blur-md">
+                <div class="rounded-[14px] bg-brandDark/95 text-white p-6 sm:p-7 space-y-5 border border-white/10">
+                  <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div class="flex items-center gap-2.5">
+                      <div class="w-9 h-9 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                      </div>
+                      <div>
+                        <div class="font-bold text-sm text-white">Full-Stack Web Engineering</div>
+                        <div class="text-xs text-sky-400">Custom Architecture &amp; APIs</div>
+                      </div>
+                    </div>
+                    <span class="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">99.9% Uptime</span>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div class="text-slate-400 text-[11px]">Frontend Stack</div>
+                      <div class="font-semibold text-white mt-1">Responsive UI &amp; Tailwind</div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div class="text-slate-400 text-[11px]">Backend Engines</div>
+                      <div class="font-semibold text-white mt-1">Python, Django &amp; APIs</div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div class="text-slate-400 text-[11px]">Security Grade</div>
+                      <div class="font-semibold text-emerald-400 mt-1">Enterprise Hardened</div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div class="text-slate-400 text-[11px]">Deployment</div>
+                      <div class="font-semibold text-sky-400 mt-1">Cloud &amp; Containerized</div>
+                    </div>
+                  </div>
+
+                  <div class="pt-1">
+                    <a href="{% url 'core:services' %}#web-development" class="btn-primary w-full py-2.5 px-4 text-xs font-semibold justify-center gap-2 cursor-pointer">
+                      <span>Explore Website &amp; Software Solutions</span>
+                      <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Strategic Marketing & Social Media Growth -->
+    <div class="hero-slide absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out opacity-0 z-0 pointer-events-none flex items-center"
+         role="group"
+         aria-roledescription="slide"
+         aria-label="3 of 5: Strategic Marketing & Brand Amplification"
+         data-slide-index="2">
+      
+      <div class="absolute inset-0 overflow-hidden">
+        <img src="{% static 'images/carousel/digital-marketing.jpg' %}" 
+             alt="Digital branding and social media management" 
+             class="w-full h-full object-cover transform scale-100 transition-transform duration-7000 ease-out">
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/60 lg:to-slate-900/40"></div>
+        <div class="absolute inset-0 bg-slate-950/40"></div>
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-24 sm:py-16 lg:py-24 h-full flex items-center z-10 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
+          
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/20 border border-purple-400/30 text-purple-300 text-xs font-semibold backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
+              <span>Brand Growth &amp; Visibility</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15] font-heading">
+              Strategic Marketing &amp; 
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-300 to-sky-300 block sm:inline">
+                Brand Amplification.
+              </span>
+            </h2>
+
+            <p class="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+              Data-backed social media management, brand identity design, and creative content campaigns that connect your business with active audiences and drive verifiable growth.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+              <a href="{% url 'core:services' %}#social-media" class="btn-primary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer !bg-purple-600 hover:!bg-purple-500 shadow-lg shadow-purple-600/30">
+                <span>View Marketing Solutions</span>
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+              <a href="#quote-section" class="btn-secondary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
+                <span>Request a Free Quote</span>
+              </a>
+              <a href="https://wa.me/2348117897778" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full sm:w-auto px-6 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
+                <svg class="w-5 h-5 mr-2 fill-emerald-400" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-1.996-.465-1.666-.69-2.738-2.39-2.822-2.502-.083-.112-.676-.901-.676-1.718 0-.817.429-1.218.582-1.383.153-.165.334-.206.445-.206.111 0 .222 0 .32.005.105.005.244-.04.382.291.144.344.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.188-.173.289-.087.102-.183.228-.261.306-.088.087-.179.182-.077.357.102.175.454.748.975 1.211.673.599 1.24.786 1.416.873.175.088.278.073.382-.045.105-.118.445-.518.563-.695.118-.178.236-.148.397-.089.161.059 1.02.481 1.196.569.175.088.293.133.336.207.043.074.043.431-.101.836z"/></svg>
+                <span>WhatsApp Us</span>
+              </a>
+            </div>
+
+            <div class="pt-3 hidden sm:flex flex-wrap items-center justify-center lg:justify-start gap-y-2 gap-x-6 text-xs text-slate-300 font-medium">
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Audience Growth Strategy</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Multi-Platform Management</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>200K+ Milestone Experience</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Marketing Showcase Card -->
+          <div class="hidden lg:block lg:col-span-5">
+            <div class="relative mx-auto max-w-md lg:max-w-none">
+              <div class="rounded-2xl p-1 bg-gradient-to-tr from-purple-600 via-pink-500 to-rose-400 shadow-2xl backdrop-blur-md">
+                <div class="rounded-[14px] bg-brandDark/95 text-white p-6 sm:p-7 space-y-5 border border-white/10">
+                  <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div class="flex items-center gap-2.5">
+                      <div class="w-9 h-9 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                      </div>
+                      <div>
+                        <div class="font-bold text-sm text-white">Digital Brand Growth</div>
+                        <div class="text-xs text-purple-300">Social Media &amp; Campaigns</div>
+                      </div>
+                    </div>
+                    <span class="text-[11px] font-mono text-purple-300 bg-purple-500/20 px-2 py-0.5 rounded border border-purple-500/30">Verified Impact</span>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div class="text-slate-400 text-[11px]">Milestone Achieved</div>
+                      <div class="font-bold text-white mt-1 text-sm">200,000+ Subscribers</div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div class="text-slate-400 text-[11px]">Reach Channel</div>
+                      <div class="font-semibold text-purple-300 mt-1">Multi-Platform Growth</div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div class="text-slate-400 text-[11px]">Content Model</div>
+                      <div class="font-semibold text-white mt-1">High-Converting Media</div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div class="text-slate-400 text-[11px]">Brand Identity</div>
+                      <div class="font-semibold text-emerald-400 mt-1">Strategic Consistency</div>
+                    </div>
+                  </div>
+
+                  <div class="pt-1">
+                    <a href="{% url 'core:services' %}#social-media" class="btn-primary w-full py-2.5 px-4 text-xs font-semibold justify-center gap-2 !bg-purple-600 hover:!bg-purple-500 cursor-pointer">
+                      <span>View Social Media &amp; Brand Services</span>
+                      <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Practical Technology Skills Training & Mentorship -->
+    <div class="hero-slide absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out opacity-0 z-0 pointer-events-none flex items-center"
+         role="group"
+         aria-roledescription="slide"
+         aria-label="4 of 5: Hands-On Coding & Digital Skills Mentorship"
+         data-slide-index="3">
+      
+      <div class="absolute inset-0 overflow-hidden">
+        <img src="{% static 'images/carousel/tech-training.jpg' %}" 
+             alt="Technology training and mentorship programs" 
+             class="w-full h-full object-cover transform scale-100 transition-transform duration-7000 ease-out">
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/60 lg:to-slate-900/40"></div>
+        <div class="absolute inset-0 bg-slate-950/40"></div>
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-24 sm:py-16 lg:py-24 h-full flex items-center z-10 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
+          
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-semibold backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Practical Skills Training</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15] font-heading">
+              Hands-On Coding &amp; 
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-sky-300 block sm:inline">
+                Digital Skills Mentorship.
+              </span>
+            </h2>
+
+            <p class="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+              Empowering modern students, professionals, and teams with job-ready programming, web development, and digital workspace competencies through hands-on project building.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+              <a href="{% url 'core:services' %}#tech-training" class="btn-primary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer !bg-emerald-600 hover:!bg-emerald-500 shadow-lg shadow-emerald-600/30">
+                <span>Join Training Programs</span>
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+              <a href="#quote-section" class="btn-secondary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
+                <span>Corporate Training Inquiry</span>
+              </a>
+              <a href="https://wa.me/2348117897778" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full sm:w-auto px-6 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
+                <svg class="w-5 h-5 mr-2 fill-emerald-400" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-1.996-.465-1.666-.69-2.738-2.39-2.822-2.502-.083-.112-.676-.901-.676-1.718 0-.817.429-1.218.582-1.383.153-.165.334-.206.445-.206.111 0 .222 0 .32.005.105.005.244-.04.382.291.144.344.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.188-.173.289-.087.102-.183.228-.261.306-.088.087-.179.182-.077.357.102.175.454.748.975 1.211.673.599 1.24.786 1.416.873.175.088.278.073.382-.045.105-.118.445-.518.563-.695.118-.178.236-.148.397-.089.161.059 1.02.481 1.196.569.175.088.293.133.336.207.043.074.043.431-.101.836z"/></svg>
+                <span>WhatsApp Us</span>
+              </a>
+            </div>
+
+            <div class="pt-3 hidden sm:flex flex-wrap items-center justify-center lg:justify-start gap-y-2 gap-x-6 text-xs text-slate-300 font-medium">
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>100% Practical &amp; Project-Based</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>1-on-1 Expert Mentorship</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Job-Ready Portfolio Skills</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Training Program Card -->
+          <div class="hidden lg:block lg:col-span-5">
+            <div class="relative mx-auto max-w-md lg:max-w-none">
+              <div class="rounded-2xl p-1 bg-gradient-to-tr from-emerald-600 via-teal-500 to-sky-400 shadow-2xl backdrop-blur-md">
+                <div class="rounded-[14px] bg-brandDark/95 text-white p-6 sm:p-7 space-y-5 border border-white/10">
+                  <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div class="flex items-center gap-2.5">
+                      <div class="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                      </div>
+                      <div>
+                        <div class="font-bold text-sm text-white">Practical Skills Mentorship</div>
+                        <div class="text-xs text-emerald-300">Job-Ready ICT &amp; Coding</div>
+                      </div>
+                    </div>
+                    <span class="text-[11px] font-mono text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded border border-emerald-500/30">100% Practical</span>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div class="text-slate-400 text-[11px]">Training Format</div>
+                      <div class="font-semibold text-white mt-1">Project-Based Labs</div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div class="text-slate-400 text-[11px]">Mentorship</div>
+                      <div class="font-semibold text-emerald-300 mt-1">1-on-1 Guidance</div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div class="text-slate-400 text-[11px]">Core Disciplines</div>
+                      <div class="font-semibold text-white mt-1">Coding, Design &amp; ICT</div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div class="text-slate-400 text-[11px]">Outcome</div>
+                      <div class="font-semibold text-sky-400 mt-1">Verified Portfolio</div>
+                    </div>
+                  </div>
+
+                  <div class="pt-1">
+                    <a href="{% url 'core:services' %}#tech-training" class="btn-primary w-full py-2.5 px-4 text-xs font-semibold justify-center gap-2 !bg-emerald-600 hover:!bg-emerald-500 cursor-pointer">
+                      <span>Explore Training Programs</span>
+                      <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Genuine ICT Equipment & Tech Accessories Supply -->
+    <div class="hero-slide absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out opacity-0 z-0 pointer-events-none flex items-center"
+         role="group"
+         aria-roledescription="slide"
+         aria-label="5 of 5: Genuine IT Equipment & Infrastructure Supply"
+         data-slide-index="4">
+      
+      <div class="absolute inset-0 overflow-hidden">
+        <img src="{% static 'images/carousel/hardware-supply.jpg' %}" 
+             alt="ICT hardware procurement and enterprise supplies" 
+             class="w-full h-full object-cover transform scale-100 transition-transform duration-7000 ease-out">
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/60 lg:to-slate-900/40"></div>
+        <div class="absolute inset-0 bg-slate-950/40"></div>
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-24 sm:py-16 lg:py-24 h-full flex items-center z-10 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
+          
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-300 text-xs font-semibold backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+              <span>Enterprise IT Procurement</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15] font-heading">
+              Genuine IT Equipment &amp; 
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-sky-300 block sm:inline">
+                Tech Accessories Supply.
+              </span>
+            </h2>
+
+            <p class="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+              Direct procurement of enterprise workstations, certified laptops, networking infrastructure, and genuine office IT supplies backed by comprehensive manufacturer warranty.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+              <a href="{% url 'core:services' %}#hardware-supply" class="btn-primary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer !bg-amber-600 hover:!bg-amber-500 shadow-lg shadow-amber-600/30">
+                <span>Request Equipment Quote</span>
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+              <a href="https://wa.me/2348117897778" target="_blank" rel="noopener noreferrer" class="btn-secondary w-full sm:w-auto px-6 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
+                <svg class="w-5 h-5 mr-2 fill-emerald-400" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-1.996-.465-1.666-.69-2.738-2.39-2.822-2.502-.083-.112-.676-.901-.676-1.718 0-.817.429-1.218.582-1.383.153-.165.334-.206.445-.206.111 0 .222 0 .32.005.105.005.244-.04.382.291.144.344.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.188-.173.289-.087.102-.183.228-.261.306-.088.087-.179.182-.077.357.102.175.454.748.975 1.211.673.599 1.24.786 1.416.873.175.088.278.073.382-.045.105-.118.445-.518.563-.695.118-.178.236-.148.397-.089.161.059 1.02.481 1.196.569.175.088.293.133.336.207.043.074.043.431-.101.836z"/></svg>
+                <span>WhatsApp Us</span>
+              </a>
+              <a href="#services" class="btn-secondary w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base cursor-pointer !bg-white/10 hover:!bg-white/20 !text-white !border-white/20 backdrop-blur-md">
+                <span>Explore All Services</span>
+              </a>
+            </div>
+
+            <div class="pt-3 hidden sm:flex flex-wrap items-center justify-center lg:justify-start gap-y-2 gap-x-6 text-xs text-slate-300 font-medium">
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Direct Manufacturer Warranty</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Direct &amp; Safe Delivery</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Corporate IT Supplies</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Hardware Spec Card -->
+          <div class="hidden lg:block lg:col-span-5">
+            <div class="relative mx-auto max-w-md lg:max-w-none">
+              <div class="rounded-2xl p-1 bg-gradient-to-tr from-amber-500 via-orange-500 to-yellow-400 shadow-2xl backdrop-blur-md">
+                <div class="rounded-[14px] bg-brandDark/95 text-white p-6 sm:p-7 space-y-5 border border-white/10">
+                  <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div class="flex items-center gap-2.5">
+                      <div class="w-9 h-9 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                      </div>
+                      <div>
+                        <div class="font-bold text-sm text-white">Enterprise IT Procurement</div>
+                        <div class="text-xs text-amber-300">Certified Hardware Supply</div>
+                      </div>
+                    </div>
+                    <span class="text-[11px] font-mono text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded border border-amber-500/30">Guaranteed Genuine</span>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div class="text-slate-400 text-[11px]">Hardware Class</div>
+                      <div class="font-semibold text-white mt-1">Enterprise Workstations</div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div class="text-slate-400 text-[11px]">Warranty</div>
+                      <div class="font-semibold text-amber-300 mt-1">Manufacturer Backed</div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div class="text-slate-400 text-[11px]">Infrastructure</div>
+                      <div class="font-semibold text-white mt-1">Networking &amp; Servers</div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/10">
+                      <div class="text-slate-400 text-[11px]">Logistics</div>
+                      <div class="font-semibold text-emerald-400 mt-1">Nationwide Delivery</div>
+                    </div>
+                  </div>
+
+                  <div class="pt-1">
+                    <a href="{% url 'core:services' %}#hardware-supply" class="btn-primary w-full py-2.5 px-4 text-xs font-semibold justify-center gap-2 !bg-amber-600 hover:!bg-amber-500 cursor-pointer">
+                      <span>Request Hardware Procurement Quote</span>
+                      <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Global Carousel Bottom Controller Bar -->
+  <div class="absolute bottom-5 left-0 right-0 z-30 px-4 sm:px-6 lg:px-8 pointer-events-none">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Dots / Indicators -->
+      <div class="flex items-center gap-2 pointer-events-auto" role="tablist" aria-label="Hero Carousel Slides">
+        <button type="button" class="hero-dot transition-all duration-300 h-2.5 rounded-full w-9 bg-sky-400 focus:outline-none focus:ring-2 focus:ring-white cursor-pointer" data-slide-index="0" aria-label="Go to slide 1: Digital Solutions That Help You Build, Connect &amp; Grow" role="tab" aria-selected="true"></button>
+        <button type="button" class="hero-dot transition-all duration-300 h-2.5 rounded-full w-3 bg-white/40 hover:bg-white/70 focus:outline-none focus:ring-2 focus:ring-white cursor-pointer" data-slide-index="1" aria-label="Go to slide 2: High-Performance Websites &amp; Custom Web Applications" role="tab" aria-selected="false"></button>
+        <button type="button" class="hero-dot transition-all duration-300 h-2.5 rounded-full w-3 bg-white/40 hover:bg-white/70 focus:outline-none focus:ring-2 focus:ring-white cursor-pointer" data-slide-index="2" aria-label="Go to slide 3: Strategic Marketing &amp; Brand Amplification" role="tab" aria-selected="false"></button>
+        <button type="button" class="hero-dot transition-all duration-300 h-2.5 rounded-full w-3 bg-white/40 hover:bg-white/70 focus:outline-none focus:ring-2 focus:ring-white cursor-pointer" data-slide-index="3" aria-label="Go to slide 4: Hands-On Coding &amp; Digital Skills Mentorship" role="tab" aria-selected="false"></button>
+        <button type="button" class="hero-dot transition-all duration-300 h-2.5 rounded-full w-3 bg-white/40 hover:bg-white/70 focus:outline-none focus:ring-2 focus:ring-white cursor-pointer" data-slide-index="4" aria-label="Go to slide 5: Genuine ICT Equipment &amp; Tech Accessories Supply" role="tab" aria-selected="false"></button>
+      </div>
+
+      <!-- Controls: Arrows + Counter + Play/Pause Toggle -->
+      <div class="flex items-center gap-2 sm:gap-3 pointer-events-auto">
+        <button type="button" id="hero-prev-btn" class="w-8 sm:w-9 h-8 sm:h-9 rounded-full bg-slate-900/80 hover:bg-brandBlue text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-md hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-sky-400" aria-label="Previous Slide">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+
+        <button type="button" id="hero-next-btn" class="w-8 sm:w-9 h-8 sm:h-9 rounded-full bg-slate-900/80 hover:bg-brandBlue text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-md hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-sky-400" aria-label="Next Slide">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+
+        <span id="hero-slide-counter" class="text-xs font-mono font-medium text-slate-300 bg-slate-900/80 backdrop-blur-md px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-slate-700/60">01 / 05</span>
+        
+        <button type="button" id="hero-play-pause-btn" class="w-8 sm:w-9 h-8 sm:h-9 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/60 flex items-center justify-center transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky-400 active:scale-95" aria-label="Pause Auto-Play" title="Pause Auto-Play">
+          <svg id="hero-pause-icon" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+          <svg id="hero-play-icon" class="w-3.5 h-3.5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- Trust Stats Bar -->
+<section class="bg-white py-10 border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
       <div class="p-4 rounded-xl bg-slate-50/70 border border-slate-100">
         <div class="text-2xl sm:text-3xl font-extrabold text-brandNavy font-heading">100%</div>
         <div class="text-xs text-slate-600 mt-1 font-medium">Incorporated Nigerian Firm</div>
@@ -149,10 +660,9 @@
       </div>
       <div class="p-4 rounded-xl bg-slate-50/70 border border-slate-100">
         <div class="text-2xl sm:text-3xl font-extrabold text-brandBlue font-heading">100% Nationwide</div>
-        <div class="text-xs text-slate-600 mt-1 font-medium">Nigeria & Remote Worldwide</div>
+        <div class="text-xs text-slate-600 mt-1 font-medium">Nigeria &amp; Remote Worldwide</div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -911,5 +1421,203 @@
       }
     });
   }
+
+  // ==========================================
+  // Full-Width Hero Showcase Carousel Controller
+  // ==========================================
+  (function initHeroCarousel() {
+    function setupCarousel() {
+      const heroSection = document.getElementById('hero-carousel-section');
+      if (!heroSection) return;
+
+      const slides = heroSection.querySelectorAll('.hero-slide');
+      const dots = heroSection.querySelectorAll('.hero-dot');
+      const prevBtn = document.getElementById('hero-prev-btn');
+      const nextBtn = document.getElementById('hero-next-btn');
+      const counterEl = document.getElementById('hero-slide-counter');
+      const playPauseBtn = document.getElementById('hero-play-pause-btn');
+      const pauseIcon = document.getElementById('hero-pause-icon');
+      const playIcon = document.getElementById('hero-play-icon');
+
+      const totalSlides = slides.length;
+      if (totalSlides === 0) return;
+
+      let currentSlide = 0;
+      let autoPlayTimer = null;
+      let isUserPaused = false;
+      const intervalMs = 4500; // Time delay: 4.5 seconds per slide
+
+      function updateSlide(index) {
+        if (index < 0) {
+          currentSlide = totalSlides - 1;
+        } else if (index >= totalSlides) {
+          currentSlide = 0;
+        } else {
+          currentSlide = index;
+        }
+
+        // Toggle visibility and transitions for each slide
+        slides.forEach((slide, i) => {
+          const img = slide.querySelector('img');
+          if (i === currentSlide) {
+            slide.classList.remove('opacity-0', 'z-0', 'pointer-events-none');
+            slide.classList.add('opacity-100', 'z-10', 'pointer-events-auto');
+            if (img) img.classList.add('scale-105');
+          } else {
+            slide.classList.remove('opacity-100', 'z-10', 'pointer-events-auto');
+            slide.classList.add('opacity-0', 'z-0', 'pointer-events-none');
+            if (img) img.classList.remove('scale-105');
+          }
+        });
+
+        // Update indicator dots
+        dots.forEach((dot, i) => {
+          if (i === currentSlide) {
+            dot.classList.remove('w-3', 'bg-white/40');
+            dot.classList.add('w-9', 'bg-sky-400');
+            dot.setAttribute('aria-selected', 'true');
+          } else {
+            dot.classList.remove('w-9', 'bg-sky-400');
+            dot.classList.add('w-3', 'bg-white/40');
+            dot.setAttribute('aria-selected', 'false');
+          }
+        });
+
+        // Update slide counter
+        if (counterEl) {
+          const formattedCurrent = String(currentSlide + 1).padStart(2, '0');
+          const formattedTotal = String(totalSlides).padStart(2, '0');
+          counterEl.textContent = `${formattedCurrent} / ${formattedTotal}`;
+        }
+      }
+
+      function nextSlide() {
+        updateSlide(currentSlide + 1);
+      }
+
+      function prevSlide() {
+        updateSlide(currentSlide - 1);
+      }
+
+      function startAutoPlay() {
+        if (isUserPaused) return;
+        stopAutoPlay();
+        autoPlayTimer = setInterval(nextSlide, intervalMs);
+      }
+
+      function stopAutoPlay() {
+        if (autoPlayTimer) {
+          clearInterval(autoPlayTimer);
+          autoPlayTimer = null;
+        }
+      }
+
+      // Next / Previous buttons
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          nextSlide();
+          startAutoPlay();
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          prevSlide();
+          startAutoPlay();
+        });
+      }
+
+      // Dot indicators
+      dots.forEach((dot) => {
+        dot.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const targetIndex = parseInt(this.getAttribute('data-slide-index'), 10);
+          if (!isNaN(targetIndex)) {
+            updateSlide(targetIndex);
+            startAutoPlay();
+          }
+        });
+      });
+
+      // Play / Pause toggle
+      if (playPauseBtn) {
+        playPauseBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          isUserPaused = !isUserPaused;
+          if (isUserPaused) {
+            stopAutoPlay();
+            if (pauseIcon) pauseIcon.classList.add('hidden');
+            if (playIcon) playIcon.classList.remove('hidden');
+            this.setAttribute('aria-label', 'Resume Auto-Play');
+            this.setAttribute('title', 'Resume Auto-Play');
+          } else {
+            startAutoPlay();
+            if (pauseIcon) pauseIcon.classList.remove('hidden');
+            if (playIcon) playIcon.classList.add('hidden');
+            this.setAttribute('aria-label', 'Pause Auto-Play');
+            this.setAttribute('title', 'Pause Auto-Play');
+          }
+        });
+      }
+
+      // Keyboard navigation (Left / Right Arrow)
+      document.addEventListener('keydown', function(e) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+        if (e.key === 'ArrowLeft') {
+          prevSlide();
+          startAutoPlay();
+        } else if (e.key === 'ArrowRight') {
+          nextSlide();
+          startAutoPlay();
+        }
+      });
+
+      // Mobile Touch Swipe Gestures
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      heroSection.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      heroSection.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        const diffX = touchEndX - touchStartX;
+        if (Math.abs(diffX) > 40) {
+          if (diffX < 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+          startAutoPlay();
+        }
+      }, { passive: true });
+
+      // Tab visibility awareness
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          stopAutoPlay();
+        } else if (!isUserPaused) {
+          startAutoPlay();
+        }
+      });
+
+      // Initialize
+      updateSlide(0);
+      startAutoPlay();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupCarousel);
+    } else {
+      setupCarousel();
+    }
+  })();
 </script>
 {% endblock %}
